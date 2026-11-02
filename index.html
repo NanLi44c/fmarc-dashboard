@@ -260,27 +260,35 @@ function renderMap(data, world) {
   const byNumeric = {};
   for (const [a2, m] of Object.entries(data.country_meta)) byNumeric[m.numeric] = a2;
   const paths = svg.append("g").selectAll("path").data(feats).join("path").attr("class", "country").attr("d", path);
+  // countries too small to see at world scale (Cyprus, the host, among them) also get a dot
+  const small = feats.filter(f => path.area(f) < 40 && byNumeric[f.id]);
+  const dots = svg.append("g").selectAll("circle").data(small).join("circle").attr("class", "country")
+    .attr("cx", f => path.centroid(f)[0]).attr("cy", f => path.centroid(f)[1]).attr("r", 4.5)
+    .style("stroke", v("--map-stroke")).style("stroke-width", 2);
   const ramp = ["--seq-1", "--seq-2", "--seq-3", "--seq-4", "--seq-5", "--seq-6", "--seq-7"].map(v);
+  // fixed bands: the counts are very skewed (one country has 100+), and fixed bands keep years comparable
+  const bands = [2, 5, 10, 20, 50, 100];
+  const bandLabels = ["1", "2–4", "5–9", "10–19", "20–49", "50–99", "100+"];
+  const scale = d3.scaleThreshold().domain(bands).range(ramp);
 
   function update(key) {
     const counts = data.countries_by_year[key] || {};
-    const max = Math.max(1, ...Object.values(counts));
-    const scale = d3.scaleQuantize().domain([1, Math.max(max, 7)]).range(ramp);
-    paths
-      .style("fill", f => { const a2 = byNumeric[f.id]; return a2 && counts[a2] ? scale(counts[a2]) : v("--map-empty"); })
-      .classed("has", f => !!(byNumeric[f.id] && counts[byNumeric[f.id]]))
-      .on("pointermove", (evt, f) => {
-        const a2 = byNumeric[f.id];
-        const n = a2 ? counts[a2] || 0 : 0;
-        const name = a2 ? data.country_meta[a2].name : (f.properties && f.properties.name) || "";
-        showTip(evt, [el("div", { class: "v" }, n ? `${fmt(n)} paper${n === 1 ? "" : "s"}` : "No papers"), el("div", { class: "k" }, name)]);
-      })
-      .on("pointerleave", hideTip);
+    const fill = f => { const a2 = byNumeric[f.id]; return a2 && counts[a2] ? scale(counts[a2]) : v("--map-empty"); };
+    const hover = (evt, f) => {
+      const a2 = byNumeric[f.id];
+      const n = a2 ? counts[a2] || 0 : 0;
+      const name = a2 ? data.country_meta[a2].name : (f.properties && f.properties.name) || "";
+      showTip(evt, [el("div", { class: "v" }, n ? `${fmt(n)} paper${n === 1 ? "" : "s"}` : "No papers"), el("div", { class: "k" }, name)]);
+    };
+    paths.style("fill", fill).classed("has", f => !!(byNumeric[f.id] && counts[byNumeric[f.id]]))
+      .on("pointermove", hover).on("pointerleave", hideTip);
+    dots.style("fill", fill).attr("display", f => counts[byNumeric[f.id]] ? null : "none")
+      .classed("has", true).on("pointermove", hover).on("pointerleave", hideTip);
 
     const lg = document.getElementById("map-legend");
     const rampEl = el("span", { class: "ramp" });
-    ramp.forEach(c => { const s = el("span"); s.style.background = c; rampEl.append(s); });
-    lg.replaceChildren(el("span", {}, "1"), rampEl, el("span", {}, `${fmt(Math.max(max, 7))}+ papers`));
+    ramp.forEach((c, i) => { const s = el("span", { title: `${bandLabels[i]} papers` }); s.style.background = c; rampEl.append(s); });
+    lg.replaceChildren(el("span", {}, "1"), rampEl, el("span", {}, "100+ papers"));
 
     const rows = Object.entries(counts).sort((a, b) => b[1] - a[1]);
     const top = rows.slice(0, 15);
