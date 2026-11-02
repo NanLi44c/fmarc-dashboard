@@ -261,7 +261,9 @@ function renderMap(data, world) {
   for (const [a2, m] of Object.entries(data.country_meta)) byNumeric[m.numeric] = a2;
   const paths = svg.append("g").selectAll("path").data(feats).join("path").attr("class", "country").attr("d", path);
   // countries too small to see at world scale (Cyprus, the host, among them) also get a dot
-  const small = feats.filter(f => path.area(f) < 40 && byNumeric[f.id]);
+  // judged per country code, so a tiny territory sharing a code (Ashmore Is. = Australia) gets no dot
+  const maxArea = d3.rollup(feats, fs => d3.max(fs, f => path.area(f)), f => f.id);
+  const small = feats.filter(f => byNumeric[f.id] && maxArea.get(f.id) < 40 && path.area(f) === maxArea.get(f.id));
   const dots = svg.append("g").selectAll("circle").data(small).join("circle").attr("class", "country")
     .attr("cx", f => path.centroid(f)[0]).attr("cy", f => path.centroid(f)[1]).attr("r", 4.5)
     .style("stroke", v("--map-stroke")).style("stroke-width", 2);
