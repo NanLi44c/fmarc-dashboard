@@ -12,6 +12,7 @@
  "kpi": {
   "papers": 372,
   "presentations": 382,
+  "researchers": 757,
   "countries": 32,
   "published": 119,
   "journals": 53,
@@ -19,7 +20,27 @@
    2019,
    2023
   ],
-  "mature_published_pct": 49.1
+  "mature_published_pct": 49.1,
+  "ajg_top": 39,
+  "ajg_3plus_pct": 83.2,
+  "median_years_to_publication": 2.0,
+  "citations": 1758,
+  "multi_country_pct": 44.0,
+  "foreign_author_pct": 93.6
+ },
+ "ajg": {
+  "edition": "AJG 2024",
+  "source": "Chartered Association of Business Schools, Academic Journal Guide 2024",
+  "verified": false,
+  "distribution": {
+   "4*": 11,
+   "4": 28,
+   "3": 60,
+   "2": 16,
+   "1": 2,
+   "not listed": 2
+  },
+  "rated_share_3plus": 84.6
  },
  "by_year": [
   {
@@ -30,7 +51,18 @@
    "working_paper": 3,
    "not_found": 19,
    "countries": 19,
-   "papers_with_country": 58
+   "papers_with_country": 58,
+   "multi_country": 11,
+   "with_foreign_author": 48,
+   "returning": null,
+   "stars": {
+    "4*": 3,
+    "4": 8,
+    "3": 19,
+    "2": 7,
+    "1": 2,
+    "not listed": 1
+   }
   },
   {
    "year": 2021,
@@ -40,7 +72,18 @@
    "working_paper": 5,
    "not_found": 6,
    "countries": 7,
-   "papers_with_country": 3
+   "papers_with_country": 3,
+   "multi_country": 3,
+   "with_foreign_author": 3,
+   "returning": 8,
+   "stars": {
+    "4*": 0,
+    "4": 1,
+    "3": 5,
+    "2": 3,
+    "1": 0,
+    "not listed": 0
+   }
   },
   {
    "year": 2022,
@@ -50,7 +93,18 @@
    "working_paper": 25,
    "not_found": 18,
    "countries": 5,
-   "papers_with_country": 10
+   "papers_with_country": 10,
+   "multi_country": 4,
+   "with_foreign_author": 9,
+   "returning": 25,
+   "stars": {
+    "4*": 5,
+    "4": 13,
+    "3": 13,
+    "2": 3,
+    "1": 0,
+    "not listed": 1
+   }
   },
   {
    "year": 2023,
@@ -60,7 +114,18 @@
    "working_paper": 19,
    "not_found": 13,
    "countries": 21,
-   "papers_with_country": 55
+   "papers_with_country": 55,
+   "multi_country": 34,
+   "with_foreign_author": 54,
+   "returning": 25,
+   "stars": {
+    "4*": 3,
+    "4": 5,
+    "3": 12,
+    "2": 0,
+    "1": 0,
+    "not listed": 0
+   }
   },
   {
    "year": 2024,
@@ -70,7 +135,18 @@
    "working_paper": 25,
    "not_found": 27,
    "countries": 25,
-   "papers_with_country": 62
+   "papers_with_country": 62,
+   "multi_country": 34,
+   "with_foreign_author": 61,
+   "returning": 32,
+   "stars": {
+    "4*": 0,
+    "4": 0,
+    "3": 7,
+    "2": 2,
+    "1": 0,
+    "not listed": 0
+   }
   },
   {
    "year": 2025,
@@ -80,7 +156,18 @@
    "working_paper": 27,
    "not_found": 22,
    "countries": 10,
-   "papers_with_country": 14
+   "papers_with_country": 14,
+   "multi_country": 6,
+   "with_foreign_author": 14,
+   "returning": 33,
+   "stars": {
+    "4*": 0,
+    "4": 1,
+    "3": 3,
+    "2": 1,
+    "1": 0,
+    "not listed": 0
+   }
   },
   {
    "year": 2026,
@@ -90,7 +177,18 @@
    "working_paper": 23,
    "not_found": 21,
    "countries": 23,
-   "papers_with_country": 48
+   "papers_with_country": 48,
+   "multi_country": 18,
+   "with_foreign_author": 45,
+   "returning": 27,
+   "stars": {
+    "4*": 0,
+    "4": 0,
+    "3": 1,
+    "2": 0,
+    "1": 0,
+    "not listed": 0
+   }
   }
  ],
  "countries_by_year": {
@@ -386,215 +484,374 @@
  "journals": [
   {
    "journal": "Journal of Corporate Finance",
-   "n": 15
+   "n": 15,
+   "ajg": "4"
   },
   {
    "journal": "Journal of Banking & Finance",
-   "n": 8
+   "n": 8,
+   "ajg": "3"
   },
   {
    "journal": "British Journal of Management",
-   "n": 6
+   "n": 6,
+   "ajg": "4"
   },
   {
    "journal": "British Accounting Review",
-   "n": 5
+   "n": 5,
+   "ajg": "3"
   },
   {
    "journal": "European Journal of Finance",
-   "n": 5
+   "n": 5,
+   "ajg": "3"
   },
   {
    "journal": "Management Science",
-   "n": 4
-  },
-  {
-   "journal": "Review of Quantitative Finance and Accounting",
-   "n": 4
+   "n": 4,
+   "ajg": "4*"
   },
   {
    "journal": "International Review of Financial Analysis",
-   "n": 4
+   "n": 4,
+   "ajg": "3"
+  },
+  {
+   "journal": "Review of Quantitative Finance and Accounting",
+   "n": 4,
+   "ajg": "3"
   },
   {
    "journal": "Journal of Empirical Finance",
-   "n": 3
-  },
-  {
-   "journal": "Review of Corporate Finance Studies",
-   "n": 3
+   "n": 3,
+   "ajg": "3"
   },
   {
    "journal": "Journal of Financial Research",
-   "n": 3
+   "n": 3,
+   "ajg": "3"
   },
   {
-   "journal": "Journal of Business Finance & Accounting",
-   "n": 2
-  },
-  {
-   "journal": "International Journal of Accounting",
-   "n": 2
-  },
-  {
-   "journal": "International Journal of Finance & Economics",
-   "n": 2
-  },
-  {
-   "journal": "Finance Research Letters",
-   "n": 2
-  },
-  {
-   "journal": "Maritime Policy & Management",
-   "n": 2
-  },
-  {
-   "journal": "Journal of International Money and Finance",
-   "n": 2
-  },
-  {
-   "journal": "Maritime Economics & Logistics",
-   "n": 2
-  },
-  {
-   "journal": "Scottish Journal of Political Economy",
-   "n": 2
-  },
-  {
-   "journal": "Review of Finance",
-   "n": 2
-  },
-  {
-   "journal": "Journal of Financial Economics",
-   "n": 2
-  },
-  {
-   "journal": "Journal of Financial Intermediation",
-   "n": 2
-  },
-  {
-   "journal": "Research Policy",
-   "n": 2
-  },
-  {
-   "journal": "Journal of Financial Markets",
-   "n": 2
-  },
-  {
-   "journal": "Review of Asset Pricing Studies",
-   "n": 2
-  },
-  {
-   "journal": "Journal of Money, Credit and Banking",
-   "n": 2
+   "journal": "Review of Corporate Finance Studies",
+   "n": 3,
+   "ajg": "3"
   },
   {
    "journal": "Journal of Finance",
-   "n": 2
+   "n": 2,
+   "ajg": "4*"
+  },
+  {
+   "journal": "Journal of Financial Economics",
+   "n": 2,
+   "ajg": "4*"
+  },
+  {
+   "journal": "Research Policy",
+   "n": 2,
+   "ajg": "4*"
+  },
+  {
+   "journal": "Journal of Financial Intermediation",
+   "n": 2,
+   "ajg": "4"
+  },
+  {
+   "journal": "Journal of Money, Credit and Banking",
+   "n": 2,
+   "ajg": "4"
+  },
+  {
+   "journal": "Review of Finance",
+   "n": 2,
+   "ajg": "4"
+  },
+  {
+   "journal": "International Journal of Accounting",
+   "n": 2,
+   "ajg": "3"
   },
   {
    "journal": "Journal of Accounting and Public Policy",
-   "n": 2
+   "n": 2,
+   "ajg": "3"
   },
   {
-   "journal": "Economic Systems",
-   "n": 1
+   "journal": "Journal of Business Finance & Accounting",
+   "n": 2,
+   "ajg": "3"
   },
   {
-   "journal": "International Journal of Forecasting",
-   "n": 1
+   "journal": "Journal of Financial Markets",
+   "n": 2,
+   "ajg": "3"
   },
   {
-   "journal": "Piccola Impresa Small Business",
-   "n": 1
+   "journal": "Journal of International Money and Finance",
+   "n": 2,
+   "ajg": "3"
   },
   {
-   "journal": "European J. of International Management",
-   "n": 1
+   "journal": "Review of Asset Pricing Studies",
+   "n": 2,
+   "ajg": "3"
   },
   {
-   "journal": "International Journal of Production Economics",
-   "n": 1
+   "journal": "Finance Research Letters",
+   "n": 2,
+   "ajg": "2"
   },
   {
-   "journal": "Journal of Financial Econometrics",
-   "n": 1
+   "journal": "International Journal of Finance & Economics",
+   "n": 2,
+   "ajg": "2"
   },
   {
-   "journal": "Journal of Behavioral and Experimental Finance",
-   "n": 1
+   "journal": "Maritime Economics & Logistics",
+   "n": 2,
+   "ajg": "2"
   },
   {
-   "journal": "Applied Economics Letters",
-   "n": 1
+   "journal": "Maritime Policy & Management",
+   "n": 2,
+   "ajg": "2"
   },
   {
-   "journal": "Financial Analysts Journal",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Derivatives",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Business Economics",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Futures Markets",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Financial Services Research",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Risk and Financial Management",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Financial and Quantitative Analysis",
-   "n": 1
+   "journal": "Scottish Journal of Political Economy",
+   "n": 2,
+   "ajg": "2"
   },
   {
    "journal": "Operations Research",
-   "n": 1
+   "n": 1,
+   "ajg": "4*"
   },
   {
-   "journal": "Journal of Accounting, Auditing & Finance",
-   "n": 1
-  },
-  {
-   "journal": "Financial Management",
-   "n": 1
-  },
-  {
-   "journal": "Real Estate Economics",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Regulatory Economics",
-   "n": 1
-  },
-  {
-   "journal": "European Financial Management",
-   "n": 1
-  },
-  {
-   "journal": "Journal of Public Budgeting, Accounting & Financial Management",
-   "n": 1
+   "journal": "Journal of Financial and Quantitative Analysis",
+   "n": 1,
+   "ajg": "4"
   },
   {
    "journal": "Corporate Governance: An International Review",
-   "n": 1
+   "n": 1,
+   "ajg": "3"
   },
   {
-   "journal": "Global Finance Journal",
-   "n": 1
+   "journal": "European Financial Management",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Financial Analysts Journal",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Financial Management",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "International Journal of Forecasting",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "International Journal of Production Economics",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Journal of Accounting, Auditing & Finance",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Journal of Financial Econometrics",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Journal of Financial Services Research",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Journal of Futures Markets",
+   "n": 1,
+   "ajg": "3"
   },
   {
    "journal": "Journal of International Financial Markets, Institutions and Money",
-   "n": 1
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Journal of Regulatory Economics",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Real Estate Economics",
+   "n": 1,
+   "ajg": "3"
+  },
+  {
+   "journal": "Economic Systems",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "European J. of International Management",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "Global Finance Journal",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "Journal of Business Economics",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "Journal of Derivatives",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "Journal of Public Budgeting, Accounting & Financial Management",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "Applied Economics Letters",
+   "n": 1,
+   "ajg": "1"
+  },
+  {
+   "journal": "Journal of Behavioral and Experimental Finance",
+   "n": 1,
+   "ajg": "1"
+  },
+  {
+   "journal": "Journal of Risk and Financial Management",
+   "n": 1,
+   "ajg": "not listed"
+  },
+  {
+   "journal": "Piccola Impresa Small Business",
+   "n": 1,
+   "ajg": "not listed"
+  }
+ ],
+ "lag": {
+  "Same year or earlier": 19,
+  "1 year": 26,
+  "2 years": 40,
+  "3 years": 19,
+  "4 years": 13,
+  "5+ years": 2
+ },
+ "themes": {
+  "ESG, climate & sustainability": {
+   "2019": 1.6,
+   "2021": 0.0,
+   "2022": 11.4,
+   "2023": 5.5,
+   "2024": 20.6,
+   "2025": 16.4,
+   "2026": 8.3
+  },
+  "Fintech, AI & digital": {
+   "2019": 0.0,
+   "2021": 5.0,
+   "2022": 6.3,
+   "2023": 5.5,
+   "2024": 3.2,
+   "2025": 9.1,
+   "2026": 10.4
+  },
+  "Banking & credit": {
+   "2019": 6.5,
+   "2021": 10.0,
+   "2022": 13.9,
+   "2023": 14.5,
+   "2024": 11.1,
+   "2025": 12.7,
+   "2026": 8.3
+  },
+  "Corporate governance & executives": {
+   "2019": 21.0,
+   "2021": 15.0,
+   "2022": 13.9,
+   "2023": 14.5,
+   "2024": 19.0,
+   "2025": 16.4,
+   "2026": 20.8
+  },
+  "Accounting, audit & disclosure": {
+   "2019": 16.1,
+   "2021": 10.0,
+   "2022": 17.7,
+   "2023": 12.7,
+   "2024": 19.0,
+   "2025": 12.7,
+   "2026": 12.5
+  },
+  "Markets, investors & asset pricing": {
+   "2019": 37.1,
+   "2021": 30.0,
+   "2022": 40.5,
+   "2023": 40.0,
+   "2024": 36.5,
+   "2025": 21.8,
+   "2026": 25.0
+  }
+ },
+ "most_cited": [
+  {
+   "fmarc_year": 2019,
+   "title": "Investor sentiment and stock returns: Global evidence",
+   "journal": "Journal of Empirical Finance",
+   "year": 2021,
+   "doi": "10.1016/j.jempfin.2021.07.010",
+   "citations": 165
+  },
+  {
+   "fmarc_year": 2019,
+   "title": "Stakeholders and the stock price crash risk: What matters in corporate social performance?",
+   "journal": "Journal of Corporate Finance",
+   "year": 2021,
+   "doi": "10.1016/j.jcorpfin.2020.101871",
+   "citations": 129
+  },
+  {
+   "fmarc_year": 2019,
+   "title": "Financial distress risk and stock price crashes",
+   "journal": "Journal of Corporate Finance",
+   "year": 2021,
+   "doi": "10.1016/j.jcorpfin.2020.101870",
+   "citations": 112
+  },
+  {
+   "fmarc_year": 2023,
+   "title": "Regulatory Fragmentation",
+   "journal": "Journal of Finance",
+   "year": 2025,
+   "doi": "10.1111/jofi.13423",
+   "citations": 60
+  },
+  {
+   "fmarc_year": 2019,
+   "title": "Accounting conservatism and corporate social responsibility",
+   "journal": "British Accounting Review",
+   "year": 2021,
+   "doi": "10.1016/j.bar.2020.100942",
+   "citations": 57
   }
  ],
  "publications": [
@@ -602,834 +859,1072 @@
    "fmarc_year": 2019,
    "title": "Do closed-end fund investors herd?",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2019,
-   "doi": "10.1016/j.jbankfin.2019.05.015"
+   "doi": "10.1016/j.jbankfin.2019.05.015",
+   "citations": 44
   },
   {
    "fmarc_year": 2019,
    "title": "Robust optimization of forecast combinations",
    "journal": "International Journal of Forecasting",
+   "ajg": "3",
    "year": 2019,
-   "doi": "10.1016/j.ijforecast.2019.01.007"
+   "doi": "10.1016/j.ijforecast.2019.01.007",
+   "citations": 11
   },
   {
    "fmarc_year": 2019,
    "title": "Corporate governance, the long-term orientation and the risk of financial distress - evidence from european private equity backed leveraged buyout transactions",
    "journal": "Piccola Impresa Small Business",
+   "ajg": "not listed",
    "year": 2019,
-   "doi": "10.14596/pisb.307"
+   "doi": "10.14596/pisb.307",
+   "citations": 0
   },
   {
    "fmarc_year": 2019,
    "title": "When Does the Board Blame the CEO for Poor Firm Performance? Extreme Resource Reallocation and the Board's Industry and CEO Experience",
    "journal": "British Journal of Management",
+   "ajg": "4",
    "year": 2019,
-   "doi": "10.1111/1467-8551.12384"
+   "doi": "10.1111/1467-8551.12384",
+   "citations": 16
   },
   {
    "fmarc_year": 2019,
    "title": "Compliance with pension‐related mandatory disclosures and debt financing",
    "journal": "Journal of Business Finance & Accounting",
+   "ajg": "3",
    "year": 2020,
-   "doi": "10.1111/jbfa.12479"
+   "doi": "10.1111/jbfa.12479",
+   "citations": 13
   },
   {
    "fmarc_year": 2019,
    "title": "What does not kill us makes us stronger: the story of repetitive consumer loan applications",
    "journal": "European Journal of Finance",
+   "ajg": "3",
    "year": 2020,
-   "doi": "10.1080/1351847x.2020.1793792"
+   "doi": "10.1080/1351847x.2020.1793792",
+   "citations": 11
   },
   {
    "fmarc_year": 2019,
    "title": "Public‐to‐Private Buyouts and Innovation",
    "journal": "British Journal of Management",
+   "ajg": "4",
    "year": 2020,
-   "doi": "10.1111/1467-8551.12404"
+   "doi": "10.1111/1467-8551.12404",
+   "citations": 50
   },
   {
    "fmarc_year": 2019,
    "title": "Is herding spurious or intentional? Evidence from analyst recommendation revisions and sentiment",
    "journal": "International Review of Financial Analysis",
+   "ajg": "3",
    "year": 2020,
-   "doi": "10.1016/j.irfa.2020.101539"
+   "doi": "10.1016/j.irfa.2020.101539",
+   "citations": 22
   },
   {
    "fmarc_year": 2019,
    "title": "Speculative bubbles in segmented markets: Evidence from Chinese cross-listed stocks",
    "journal": "Journal of International Money and Finance",
+   "ajg": "3",
    "year": 2020,
-   "doi": "10.1016/j.jimonfin.2020.102222"
+   "doi": "10.1016/j.jimonfin.2020.102222",
+   "citations": 12
   },
   {
    "fmarc_year": 2019,
    "title": "Hedging Demand in Long-Term Asset Allocation with an Application to Carry Trade Strategies",
    "journal": "Journal of Financial Econometrics",
+   "ajg": "3",
    "year": 2020,
-   "doi": "10.1093/jjfinec/nbaa034"
+   "doi": "10.1093/jjfinec/nbaa034",
+   "citations": 0
   },
   {
    "fmarc_year": 2019,
    "title": "Clarifying managerial biases using a probabilistic framework",
    "journal": "Journal of Behavioral and Experimental Finance",
+   "ajg": "1",
    "year": 2020,
-   "doi": "10.1016/j.jbef.2020.100333"
+   "doi": "10.1016/j.jbef.2020.100333",
+   "citations": 4
   },
   {
    "fmarc_year": 2019,
    "title": "Taking more risk tomorrow: time horizons and investment decisions",
    "journal": "Applied Economics Letters",
+   "ajg": "1",
    "year": 2020,
-   "doi": "10.1080/13504851.2020.1761522"
+   "doi": "10.1080/13504851.2020.1761522",
+   "citations": 6
   },
   {
    "fmarc_year": 2019,
    "title": "Accounting conservatism and corporate social responsibility",
    "journal": "British Accounting Review",
+   "ajg": "3",
    "year": 2021,
-   "doi": "10.1016/j.bar.2020.100942"
+   "doi": "10.1016/j.bar.2020.100942",
+   "citations": 57
   },
   {
    "fmarc_year": 2019,
    "title": "Estimating corporate bankruptcy forecasting models by maximizing discriminatory power",
    "journal": "Review of Quantitative Finance and Accounting",
+   "ajg": "3",
    "year": 2021,
-   "doi": "10.1007/s11156-021-00995-0"
+   "doi": "10.1007/s11156-021-00995-0",
+   "citations": 25
   },
   {
    "fmarc_year": 2019,
    "title": "Do stressed PE firms misbehave?",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2021,
-   "doi": "10.1016/j.jcorpfin.2020.101798"
+   "doi": "10.1016/j.jcorpfin.2020.101798",
+   "citations": 13
   },
   {
    "fmarc_year": 2019,
    "title": "Stochastic Bounds for Reference Sets in Portfolio Analysis",
    "journal": "Management Science",
+   "ajg": "4*",
    "year": 2021,
-   "doi": "10.1287/mnsc.2020.3838"
+   "doi": "10.1287/mnsc.2020.3838",
+   "citations": 20
   },
   {
    "fmarc_year": 2019,
    "title": "Pension funds and IPO pricing. Evidence from a quasi-experiment",
    "journal": "British Accounting Review",
+   "ajg": "3",
    "year": 2021,
-   "doi": "10.1016/j.bar.2020.100943"
+   "doi": "10.1016/j.bar.2020.100943",
+   "citations": 3
   },
   {
    "fmarc_year": 2019,
    "title": "Does cooperation among women enhance or impede firm performance?",
    "journal": "British Accounting Review",
+   "ajg": "3",
    "year": 2021,
-   "doi": "10.1016/j.bar.2020.100936"
+   "doi": "10.1016/j.bar.2020.100936",
+   "citations": 30
   },
   {
    "fmarc_year": 2019,
    "title": "Investor sentiment and stock returns: Global evidence",
    "journal": "Journal of Empirical Finance",
+   "ajg": "3",
    "year": 2021,
-   "doi": "10.1016/j.jempfin.2021.07.010"
+   "doi": "10.1016/j.jempfin.2021.07.010",
+   "citations": 165
   },
   {
    "fmarc_year": 2019,
    "title": "Stakeholders and the stock price crash risk: What matters in corporate social performance?",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2021,
-   "doi": "10.1016/j.jcorpfin.2020.101871"
+   "doi": "10.1016/j.jcorpfin.2020.101871",
+   "citations": 129
   },
   {
    "fmarc_year": 2019,
    "title": "CEO overconfidence and the probability of corporate failure: evidence from the United Kingdom",
    "journal": "European Journal of Finance",
+   "ajg": "3",
    "year": 2021,
-   "doi": "10.1080/1351847x.2021.1876131"
+   "doi": "10.1080/1351847x.2021.1876131",
+   "citations": 36
   },
   {
    "fmarc_year": 2019,
    "title": "Financial distress risk and stock price crashes",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2021,
-   "doi": "10.1016/j.jcorpfin.2020.101870"
+   "doi": "10.1016/j.jcorpfin.2020.101870",
+   "citations": 112
   },
   {
    "fmarc_year": 2019,
    "title": "Financial hedging and corporate investment",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2021,
-   "doi": "10.1016/j.jcorpfin.2021.101887"
+   "doi": "10.1016/j.jcorpfin.2021.101887",
+   "citations": 26
   },
   {
    "fmarc_year": 2019,
    "title": "Institutional Ownership and Firms’ Thrust to Compete",
    "journal": "British Journal of Management",
+   "ajg": "4",
    "year": 2021,
-   "doi": "10.1111/1467-8551.12496"
+   "doi": "10.1111/1467-8551.12496",
+   "citations": 41
   },
   {
    "fmarc_year": 2019,
    "title": "Quarterly earnings guidance and real earnings management",
    "journal": "Journal of Business Finance & Accounting",
+   "ajg": "3",
    "year": 2022,
-   "doi": "10.1111/jbfa.12683"
+   "doi": "10.1111/jbfa.12683",
+   "citations": 22
   },
   {
    "fmarc_year": 2019,
    "title": "Executive team heterogeneity, equity pledges, and stock Price crash risk: Evidence from China",
    "journal": "International Review of Financial Analysis",
+   "ajg": "3",
    "year": 2022,
-   "doi": "10.1016/j.irfa.2022.102420"
+   "doi": "10.1016/j.irfa.2022.102420",
+   "citations": 32
   },
   {
    "fmarc_year": 2019,
    "title": "Governance, information flow, and stock returns",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2022,
-   "doi": "10.1016/j.jcorpfin.2022.102168"
+   "doi": "10.1016/j.jcorpfin.2022.102168",
+   "citations": 21
   },
   {
    "fmarc_year": 2019,
    "title": "Disentangling demand and supply shocks in the shipping freight market: their impact on shipping investments",
    "journal": "Maritime Policy & Management",
+   "ajg": "2",
    "year": 2022,
-   "doi": "10.1080/03088839.2021.2017041"
+   "doi": "10.1080/03088839.2021.2017041",
+   "citations": 25
   },
   {
    "fmarc_year": 2019,
    "title": "Credit line pricing under heterogeneous risk beliefs",
    "journal": "International Journal of Production Economics",
+   "ajg": "3",
    "year": 2022,
-   "doi": "10.1016/j.ijpe.2021.108345"
+   "doi": "10.1016/j.ijpe.2021.108345",
+   "citations": 2
   },
   {
    "fmarc_year": 2019,
    "title": "The Fed and the stock market: A tale of sentiment states",
    "journal": "Journal of International Money and Finance",
+   "ajg": "3",
    "year": 2022,
-   "doi": "10.1016/j.jimonfin.2022.102707"
+   "doi": "10.1016/j.jimonfin.2022.102707",
+   "citations": 14
   },
   {
    "fmarc_year": 2019,
    "title": "Dynamic volatility spillovers and investor sentiment components across freight-shipping markets",
    "journal": "Maritime Economics & Logistics",
+   "ajg": "2",
    "year": 2022,
-   "doi": "10.1057/s41278-021-00209-3"
+   "doi": "10.1057/s41278-021-00209-3",
+   "citations": 15
   },
   {
    "fmarc_year": 2019,
    "title": "Does Terrorism Affect Acquisitions?",
    "journal": "Management Science",
+   "ajg": "4*",
    "year": 2023,
-   "doi": "10.1287/mnsc.2022.4506"
+   "doi": "10.1287/mnsc.2022.4506",
+   "citations": 23
   },
   {
    "fmarc_year": 2019,
    "title": "Spanning Analysis of Stock Market Anomalies Under Prospect Stochastic Dominance",
    "journal": "Management Science",
+   "ajg": "4*",
    "year": 2023,
-   "doi": "10.1287/mnsc.2023.4953"
+   "doi": "10.1287/mnsc.2023.4953",
+   "citations": 3
   },
   {
    "fmarc_year": 2019,
    "title": "Corporate governance, Shari'ah governance and financial flexibility: Evidence from the MENA region",
    "journal": "International Journal of Finance & Economics",
+   "ajg": "2",
    "year": 2023,
-   "doi": "10.1002/ijfe.2878"
+   "doi": "10.1002/ijfe.2878",
+   "citations": 15
   },
   {
    "fmarc_year": 2019,
    "title": "Information asymmetry, agency costs, and payout policies: An international analysis of IFRS adoption and the global financial crisis",
    "journal": "Economic Systems",
+   "ajg": "2",
    "year": 2023,
-   "doi": "10.1016/j.ecosys.2023.101129"
+   "doi": "10.1016/j.ecosys.2023.101129",
+   "citations": 11
   },
   {
    "fmarc_year": 2019,
    "title": "International M&As: horizontal, vertical or both",
    "journal": "European J. of International Management",
+   "ajg": "2",
    "year": 2023,
-   "doi": "10.1504/ejim.2023.130386"
+   "doi": "10.1504/ejim.2023.130386",
+   "citations": 0
   },
   {
    "fmarc_year": 2019,
    "title": "Market-based private equity returns",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.jbankfin.2023.107045"
+   "doi": "10.1016/j.jbankfin.2023.107045",
+   "citations": 4
   },
   {
    "fmarc_year": 2019,
    "title": "M&As and determinants of financial multiples in shipping: the European ro-pax and ferry market",
    "journal": "Maritime Policy & Management",
+   "ajg": "2",
    "year": 2023,
-   "doi": "10.1080/03088839.2023.2175271"
+   "doi": "10.1080/03088839.2023.2175271",
+   "citations": 2
   },
   {
    "fmarc_year": 2019,
    "title": "Integrated Reporting and the Informativeness of Financial Analysts’ Stock Recommendations",
    "journal": "International Journal of Accounting",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1142/s1094406024500094"
+   "doi": "10.1142/s1094406024500094",
+   "citations": 2
   },
   {
    "fmarc_year": 2019,
    "title": "Air quality and stock price crash risk: From the perspective of audit quality",
    "journal": "Finance Research Letters",
+   "ajg": "2",
    "year": 2025,
-   "doi": "10.1016/j.frl.2025.106773"
+   "doi": "10.1016/j.frl.2025.106773",
+   "citations": 3
   },
   {
    "fmarc_year": 2021,
    "title": "Is British output growth related to its uncertainty? Evidence using eight centuries of data",
    "journal": "Scottish Journal of Political Economy",
+   "ajg": "2",
    "year": 2021,
-   "doi": "10.1111/sjpe.12270"
+   "doi": "10.1111/sjpe.12270",
+   "citations": 1
   },
   {
    "fmarc_year": 2021,
    "title": "Effects of Venture Capital Mega-Deals on IPO Success and Post-IPO Performance",
    "journal": "Financial Analysts Journal",
+   "ajg": "3",
    "year": 2022,
-   "doi": "10.1080/0015198x.2022.2083900"
+   "doi": "10.1080/0015198x.2022.2083900",
+   "citations": 8
   },
   {
    "fmarc_year": 2021,
    "title": "A Critique of the Agency Theory Viewpoint of Stock Price Crash Risk: The Opacity and Overinvestment Channels",
    "journal": "British Journal of Management",
+   "ajg": "4",
    "year": 2022,
-   "doi": "10.1111/1467-8551.12693"
+   "doi": "10.1111/1467-8551.12693",
+   "citations": 48
   },
   {
    "fmarc_year": 2021,
    "title": "Statutory Auditors and Tax Compliance: Evidence from a Quasi-Natural Experiment",
    "journal": "International Journal of Accounting",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1142/s1094406023500051"
+   "doi": "10.1142/s1094406023500051",
+   "citations": 5
   },
   {
    "fmarc_year": 2021,
    "title": "Lobbying and innovation in the European Union",
    "journal": "Scottish Journal of Political Economy",
+   "ajg": "2",
    "year": 2023,
-   "doi": "10.1111/sjpe.12344"
+   "doi": "10.1111/sjpe.12344",
+   "citations": 4
   },
   {
    "fmarc_year": 2021,
    "title": "The impact of human resource practices on corporate investment efficiency",
    "journal": "International Review of Financial Analysis",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.irfa.2023.102609"
+   "doi": "10.1016/j.irfa.2023.102609",
+   "citations": 22
   },
   {
    "fmarc_year": 2021,
    "title": "Sign matters: Stock-movement-based trading decisions of individual investors",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.jbankfin.2022.106739"
+   "doi": "10.1016/j.jbankfin.2022.106739",
+   "citations": 1
   },
   {
    "fmarc_year": 2021,
    "title": "Do Institutional Investors Process and Act on Information? Evidence from M&A Targets",
    "journal": "Review of Corporate Finance Studies",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1093/rcfs/cfae006"
+   "doi": "10.1093/rcfs/cfae006",
+   "citations": 2
   },
   {
    "fmarc_year": 2021,
    "title": "The Forecasting Power of Short-Term Options",
    "journal": "Journal of Derivatives",
+   "ajg": "2",
    "year": 2025,
-   "doi": "10.3905/jod.2025.1.221"
+   "doi": "10.3905/jod.2025.1.221",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "Does marriage equality promote credit access? Evidence from same-sex marriage laws",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2022,
-   "doi": "10.1016/j.jcorpfin.2022.102315"
+   "doi": "10.1016/j.jcorpfin.2022.102315",
+   "citations": 8
   },
   {
    "fmarc_year": 2022,
    "title": "Industry-specific specialization in venture capitalists’ internationalization decisions",
    "journal": "Journal of Business Economics",
+   "ajg": "2",
    "year": 2022,
-   "doi": "10.1007/s11573-022-01129-1"
+   "doi": "10.1007/s11573-022-01129-1",
+   "citations": 3
   },
   {
    "fmarc_year": 2022,
    "title": "The relationship between technical innovation and financial performance in shipping firms",
    "journal": "Maritime Economics & Logistics",
+   "ajg": "2",
    "year": 2022,
-   "doi": "10.1057/s41278-022-00251-9"
+   "doi": "10.1057/s41278-022-00251-9",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "Earnings-based borrowing constraints & corporate investments in 2007–2009 financial crisis",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2022,
-   "doi": "10.1016/j.jcorpfin.2022.102227"
+   "doi": "10.1016/j.jcorpfin.2022.102227",
+   "citations": 9
   },
   {
    "fmarc_year": 2022,
    "title": "Enhancement in a firm's information environment via options trading and the efficiency of corporate investment",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.jbankfin.2023.106809"
+   "doi": "10.1016/j.jbankfin.2023.106809",
+   "citations": 22
   },
   {
    "fmarc_year": 2022,
    "title": "Internal ratings and bank opacity: Evidence from analysts’ forecasts",
    "journal": "Journal of Financial Intermediation",
+   "ajg": "4",
    "year": 2023,
-   "doi": "10.1016/j.jfi.2023.101062"
+   "doi": "10.1016/j.jfi.2023.101062",
+   "citations": 8
   },
   {
    "fmarc_year": 2022,
    "title": "Internally‐Assessed Bank Capital Requirements and Loan Portfolio Spreads",
    "journal": "British Journal of Management",
+   "ajg": "4",
    "year": 2023,
-   "doi": "10.1111/1467-8551.12708"
+   "doi": "10.1111/1467-8551.12708",
+   "citations": 7
   },
   {
    "fmarc_year": 2022,
    "title": "Unintended consequences of outcome based compensation – How CEO bonuses, stocks and stock options affect their firms' patent litigation",
    "journal": "Research Policy",
+   "ajg": "4*",
    "year": 2023,
-   "doi": "10.1016/j.respol.2023.104816"
+   "doi": "10.1016/j.respol.2023.104816",
+   "citations": 6
   },
   {
    "fmarc_year": 2022,
    "title": "Political uncertainty, corruption, and corporate cash holdings",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2023,
-   "doi": "10.1016/j.jcorpfin.2023.102447"
+   "doi": "10.1016/j.jcorpfin.2023.102447",
+   "citations": 46
   },
   {
    "fmarc_year": 2022,
    "title": "Options-based systemic risk, financial distress, and macroeconomic downturns",
    "journal": "Journal of Financial Markets",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.finmar.2023.100834"
+   "doi": "10.1016/j.finmar.2023.100834",
+   "citations": 14
   },
   {
    "fmarc_year": 2022,
    "title": "Is Firm-Level Political Risk Priced in the Equity Option Market?",
    "journal": "Review of Asset Pricing Studies",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1093/rapstu/raad013"
+   "doi": "10.1093/rapstu/raad013",
+   "citations": 14
   },
   {
    "fmarc_year": 2022,
    "title": "Issuer Motivations for Corporate Green Bond Offerings",
    "journal": "British Journal of Management",
+   "ajg": "4",
    "year": 2023,
-   "doi": "10.1111/1467-8551.12747"
+   "doi": "10.1111/1467-8551.12747",
+   "citations": 50
   },
   {
    "fmarc_year": 2022,
    "title": "Can we forecast better in periods of low uncertainty? The role of technical indicators",
    "journal": "Journal of Empirical Finance",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.jempfin.2022.12.014"
+   "doi": "10.1016/j.jempfin.2022.12.014",
+   "citations": 13
   },
   {
    "fmarc_year": 2022,
    "title": "Climate risk and financial stability: evidence from syndicated lending",
    "journal": "European Journal of Finance",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1080/1351847x.2024.2343111"
+   "doi": "10.1080/1351847x.2024.2343111",
+   "citations": 36
   },
   {
    "fmarc_year": 2022,
    "title": "Director foreign experience: Geographic specificity and value implication",
    "journal": "International Review of Financial Analysis",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1016/j.irfa.2023.102998"
+   "doi": "10.1016/j.irfa.2023.102998",
+   "citations": 11
   },
   {
    "fmarc_year": 2022,
    "title": "Corporate credit default swap systematic factors",
    "journal": "Journal of Futures Markets",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1002/fut.22505"
+   "doi": "10.1002/fut.22505",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "How does the JOBS act affect the rule 144A market?",
    "journal": "Journal of Financial Research",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1111/jfir.12392"
+   "doi": "10.1111/jfir.12392",
+   "citations": 1
   },
   {
    "fmarc_year": 2022,
    "title": "Cash-rich seasoned equity issuers",
    "journal": "European Journal of Finance",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1080/1351847x.2024.2445284"
+   "doi": "10.1080/1351847x.2024.2445284",
+   "citations": 3
   },
   {
    "fmarc_year": 2022,
    "title": "Blockchain for Accounting and Auditing—Accounting and Auditing for Cryptocurrencies: A Systematic Literature Review and Future Research Directions",
    "journal": "Journal of Risk and Financial Management",
+   "ajg": "not listed",
    "year": 2024,
-   "doi": "10.3390/jrfm17070276"
+   "doi": "10.3390/jrfm17070276",
+   "citations": 32
   },
   {
    "fmarc_year": 2022,
    "title": "Vice-chancellor narcissism and university performance",
    "journal": "Research Policy",
+   "ajg": "4*",
    "year": 2024,
-   "doi": "10.1016/j.respol.2023.104901"
+   "doi": "10.1016/j.respol.2023.104901",
+   "citations": 17
   },
   {
    "fmarc_year": 2022,
    "title": "Excess cash and equity option liquidity",
    "journal": "Journal of Financial Research",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1111/jfir.12379"
+   "doi": "10.1111/jfir.12379",
+   "citations": 2
   },
   {
    "fmarc_year": 2022,
    "title": "Does CFO Board Membership Benefit Shareholders? The Case of Corporate Acquisitions",
    "journal": "Journal of Financial and Quantitative Analysis",
+   "ajg": "4",
    "year": 2024,
-   "doi": "10.1017/s0022109024000061"
+   "doi": "10.1017/s0022109024000061",
+   "citations": 1
   },
   {
    "fmarc_year": 2022,
    "title": "Backing away from ESG? The effect of sovereign rating downgrades on corporate sustainability",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1016/j.jcorpfin.2025.102856"
+   "doi": "10.1016/j.jcorpfin.2025.102856",
+   "citations": 5
   },
   {
    "fmarc_year": 2022,
    "title": "The Impact of Regulatory Changes on Rating Shopping and Rating Catering Behavior in the European Securitization Market",
    "journal": "Journal of Financial Services Research",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1007/s10693-025-00453-1"
+   "doi": "10.1007/s10693-025-00453-1",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "Pricing event risk: evidence from concave implied volatility curves",
    "journal": "Review of Finance",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1093/rof/rfaf016"
+   "doi": "10.1093/rof/rfaf016",
+   "citations": 9
   },
   {
    "fmarc_year": 2022,
    "title": "Why does options market information predict stock returns?",
    "journal": "Journal of Financial Economics",
+   "ajg": "4*",
    "year": 2025,
-   "doi": "10.1016/j.jfineco.2025.104153"
+   "doi": "10.1016/j.jfineco.2025.104153",
+   "citations": 16
   },
   {
    "fmarc_year": 2022,
    "title": "Customer orientation and stock resilience during adversity periods",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1016/j.jcorpfin.2025.102780"
+   "doi": "10.1016/j.jcorpfin.2025.102780",
+   "citations": 2
   },
   {
    "fmarc_year": 2022,
    "title": "The good and evil of algos: Investment-to-price sensitivity and the learning hypothesis",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1016/j.jcorpfin.2025.102834"
+   "doi": "10.1016/j.jcorpfin.2025.102834",
+   "citations": 2
   },
   {
    "fmarc_year": 2022,
    "title": "Does the level of cash always increase with firm size? Theory and evidence from small firms",
    "journal": "Review of Finance",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1093/rof/rfaf008"
+   "doi": "10.1093/rof/rfaf008",
+   "citations": 6
   },
   {
    "fmarc_year": 2022,
    "title": "Monetizing Positive Externalities to Mitigate the Infrastructure Underinvestment Problem",
    "journal": "Operations Research",
+   "ajg": "4*",
    "year": 2025,
-   "doi": "10.1287/opre.2023.0075"
+   "doi": "10.1287/opre.2023.0075",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "Non-underwritten placements of equity",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2026,
-   "doi": "10.1016/j.jcorpfin.2026.103056"
+   "doi": "10.1016/j.jcorpfin.2026.103056",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "The incentives of SPAC sponsors",
    "journal": "Journal of Financial Economics",
+   "ajg": "4*",
    "year": 2026,
-   "doi": "10.1016/j.jfineco.2025.104220"
+   "doi": "10.1016/j.jfineco.2025.104220",
+   "citations": 5
   },
   {
    "fmarc_year": 2022,
    "title": "Brexit and Its Impact on EU Financial Markets",
    "journal": "International Journal of Finance & Economics",
+   "ajg": "2",
    "year": 2026,
-   "doi": "10.1002/ijfe.70149"
+   "doi": "10.1002/ijfe.70149",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "Does options trading reduce the demand for conditional accounting conservatism?",
    "journal": "British Accounting Review",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1016/j.bar.2026.101841"
+   "doi": "10.1016/j.bar.2026.101841",
+   "citations": 0
   },
   {
    "fmarc_year": 2022,
    "title": "The investment effects of dark trading",
    "journal": "Journal of Financial Markets",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1016/j.finmar.2026.101072"
+   "doi": "10.1016/j.finmar.2026.101072",
+   "citations": 0
   },
   {
    "fmarc_year": 2023,
    "title": "The role of financial covenants in pricing private investments in public equity",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2023,
-   "doi": "10.1016/j.jcorpfin.2023.102466"
+   "doi": "10.1016/j.jcorpfin.2023.102466",
+   "citations": 6
   },
   {
    "fmarc_year": 2023,
    "title": "Firm life cycle and cost of debt",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1016/j.jbankfin.2023.106971"
+   "doi": "10.1016/j.jbankfin.2023.106971",
+   "citations": 39
   },
   {
    "fmarc_year": 2023,
    "title": "The economic effects of real estate investors",
    "journal": "Real Estate Economics",
+   "ajg": "3",
    "year": 2023,
-   "doi": "10.1111/1540-6229.12427"
+   "doi": "10.1111/1540-6229.12427",
+   "citations": 39
   },
   {
    "fmarc_year": 2023,
    "title": "Jump tail risk exposure and the cross-section of stock returns",
    "journal": "Journal of Empirical Finance",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1016/j.jempfin.2024.101565"
+   "doi": "10.1016/j.jempfin.2024.101565",
+   "citations": 4
   },
   {
    "fmarc_year": 2023,
    "title": "Local peer influence on dividend payout decisions",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1016/j.jbankfin.2024.107206"
+   "doi": "10.1016/j.jbankfin.2024.107206",
+   "citations": 20
   },
   {
    "fmarc_year": 2023,
    "title": "The impact of social media influencers on the financial market performance of firms",
    "journal": "European Financial Management",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1111/eufm.12513"
+   "doi": "10.1111/eufm.12513",
+   "citations": 30
   },
   {
    "fmarc_year": 2023,
    "title": "Open data and API adoption of U.S. banks",
    "journal": "Journal of Financial Intermediation",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1016/j.jfi.2025.101162"
+   "doi": "10.1016/j.jfi.2025.101162",
+   "citations": 12
   },
   {
    "fmarc_year": 2023,
    "title": "Fiscal Distress and Banking Performance: The Role of Macroprudential Regulation",
    "journal": "Journal of Money, Credit and Banking",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1111/jmcb.13247"
+   "doi": "10.1111/jmcb.13247",
+   "citations": 0
   },
   {
    "fmarc_year": 2023,
    "title": "Misconduct in the SPAC market: Evidence from venture capital exits",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2025,
-   "doi": "10.1016/j.jcorpfin.2025.102792"
+   "doi": "10.1016/j.jcorpfin.2025.102792",
+   "citations": 1
   },
   {
    "fmarc_year": 2023,
    "title": "Option market liquidity and stock price crash risk",
    "journal": "European Journal of Finance",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1080/1351847x.2025.2598224"
+   "doi": "10.1080/1351847x.2025.2598224",
+   "citations": 3
   },
   {
    "fmarc_year": 2023,
    "title": "The Consequences of Audit Partner Narcissism: Evidence From the UK Market",
    "journal": "Journal of Accounting, Auditing & Finance",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1177/0148558x251394472"
+   "doi": "10.1177/0148558x251394472",
+   "citations": 0
   },
   {
    "fmarc_year": 2023,
    "title": "Regulatory Fragmentation",
    "journal": "Journal of Finance",
+   "ajg": "4*",
    "year": 2025,
-   "doi": "10.1111/jofi.13423"
+   "doi": "10.1111/jofi.13423",
+   "citations": 60
   },
   {
    "fmarc_year": 2023,
    "title": "Policy information uncertainty and foreign institutional investors trading behavior: evidence from India",
    "journal": "Review of Quantitative Finance and Accounting",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1007/s11156-025-01448-8"
+   "doi": "10.1007/s11156-025-01448-8",
+   "citations": 3
   },
   {
    "fmarc_year": 2023,
    "title": "Asset Pricing and Risk‐Sharing Implications of Alternative Pension Plan Systems",
    "journal": "Journal of Finance",
+   "ajg": "4*",
    "year": 2025,
-   "doi": "10.1111/jofi.13507"
+   "doi": "10.1111/jofi.13507",
+   "citations": 2
   },
   {
    "fmarc_year": 2023,
    "title": "Implicit Promises and the Timing of Defined‐Benefit Pension Plan Freezes",
    "journal": "Financial Management",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1111/fima.12501"
+   "doi": "10.1111/fima.12501",
+   "citations": 0
   },
   {
    "fmarc_year": 2023,
    "title": "Do temporary changes in earnings caused by mean reversion affect firms’ refinancing decisions?",
    "journal": "Journal of Financial Research",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1111/jfir.12452"
+   "doi": "10.1111/jfir.12452",
+   "citations": 1
   },
   {
    "fmarc_year": 2023,
    "title": "The impact of green regulation on cost stickiness",
    "journal": "British Accounting Review",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1016/j.bar.2025.101693"
+   "doi": "10.1016/j.bar.2025.101693",
+   "citations": 3
   },
   {
    "fmarc_year": 2023,
    "title": "Privacy Regulation and Fintech Lending",
    "journal": "Management Science",
+   "ajg": "4*",
    "year": 2026,
-   "doi": "10.1287/mnsc.2025.02874"
+   "doi": "10.1287/mnsc.2025.02874",
+   "citations": 1
   },
   {
    "fmarc_year": 2023,
    "title": "Cyberattacks on Small Banks and the Impact on Local Banking Markets",
    "journal": "Journal of Money, Credit and Banking",
+   "ajg": "4",
    "year": 2026,
-   "doi": "10.1111/jmcb.70043"
+   "doi": "10.1111/jmcb.70043",
+   "citations": 3
   },
   {
    "fmarc_year": 2023,
    "title": "Real estate regulation and market perceptions of bank returns: evidence from a quasi-natural experiment in India",
    "journal": "Journal of Regulatory Economics",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1007/s11149-026-09509-z"
+   "doi": "10.1007/s11149-026-09509-z",
+   "citations": 0
   },
   {
    "fmarc_year": 2024,
    "title": "Adaptability culture and meeting or beating analysts’ estimates",
    "journal": "Review of Quantitative Finance and Accounting",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1007/s11156-024-01351-8"
+   "doi": "10.1007/s11156-024-01351-8",
+   "citations": 3
   },
   {
    "fmarc_year": 2024,
    "title": "Value creation or political trick? An event study on anti-ESG regulations",
    "journal": "Finance Research Letters",
+   "ajg": "2",
    "year": 2024,
-   "doi": "10.1016/j.frl.2024.105530"
+   "doi": "10.1016/j.frl.2024.105530",
+   "citations": 22
   },
   {
    "fmarc_year": 2024,
    "title": "Equity financing during the Covid-19 economic downturn",
    "journal": "Review of Quantitative Finance and Accounting",
+   "ajg": "3",
    "year": 2024,
-   "doi": "10.1007/s11156-024-01335-8"
+   "doi": "10.1007/s11156-024-01335-8",
+   "citations": 4
   },
   {
    "fmarc_year": 2024,
    "title": "The effect of debt intensity on the asymmetric cost behavior: empirical evidence from local governments",
    "journal": "Journal of Public Budgeting, Accounting & Financial Management",
+   "ajg": "2",
    "year": 2024,
-   "doi": "10.1108/jpbafm-12-2023-0228"
+   "doi": "10.1108/jpbafm-12-2023-0228",
+   "citations": 2
   },
   {
    "fmarc_year": 2024,
    "title": "Bridging the gap: A study of government suppliers' reporting practices",
    "journal": "Journal of Accounting and Public Policy",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1016/j.jaccpubpol.2025.107353"
+   "doi": "10.1016/j.jaccpubpol.2025.107353",
+   "citations": 2
   },
   {
    "fmarc_year": 2024,
    "title": "Uncovering the asymmetric information content of high-frequency options",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1016/j.jbankfin.2026.107720"
+   "doi": "10.1016/j.jbankfin.2026.107720",
+   "citations": 1
   },
   {
    "fmarc_year": 2024,
    "title": "Momentum in the Cryptocurrency Market: A Comprehensive Analysis under Realistic Assumptions",
    "journal": "Review of Asset Pricing Studies",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1093/rapstu/raag011"
+   "doi": "10.1093/rapstu/raag011",
+   "citations": 0
   },
   {
    "fmarc_year": 2024,
    "title": "Strategic Risk Modeling by Banks: Evidence from inside the Black Box",
    "journal": "Review of Corporate Finance Studies",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1093/rcfs/cfag024"
+   "doi": "10.1093/rcfs/cfag024",
+   "citations": 0
   },
   {
    "fmarc_year": 2024,
    "title": "ESG Disclosure, Foreign Ownership, and the Role of the Information and Governance Environments",
    "journal": "Corporate Governance: An International Review",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1111/corg.70032"
+   "doi": "10.1111/corg.70032",
+   "citations": 6
   },
   {
    "fmarc_year": 2025,
    "title": "Has the FINRA Rule 2242 been successful in enhancing the quality of debt reports issued by sell-side analysts?",
    "journal": "Journal of Accounting and Public Policy",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1016/j.jaccpubpol.2025.107368"
+   "doi": "10.1016/j.jaccpubpol.2025.107368",
+   "citations": 0
   },
   {
    "fmarc_year": 2025,
    "title": "Corporate Hiring under Uncertainty",
    "journal": "Review of Corporate Finance Studies",
+   "ajg": "3",
    "year": 2025,
-   "doi": "10.1093/rcfs/cfaf008"
+   "doi": "10.1093/rcfs/cfaf008",
+   "citations": 12
   },
   {
    "fmarc_year": 2025,
    "title": "Why do firms repurchase their shares when they are overpriced?",
    "journal": "Journal of Banking & Finance",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1016/j.jbankfin.2025.107568"
+   "doi": "10.1016/j.jbankfin.2025.107568",
+   "citations": 0
   },
   {
    "fmarc_year": 2025,
    "title": "Weather risk and financial markets: Credit risk, stock returns, and corporate fundamentals",
    "journal": "Global Finance Journal",
+   "ajg": "2",
    "year": 2026,
-   "doi": "10.1016/j.gfj.2026.101239"
+   "doi": "10.1016/j.gfj.2026.101239",
+   "citations": 0
   },
   {
    "fmarc_year": 2025,
    "title": "Strategic cash portfolio management in the face of policy uncertainty: Evidence from U.S. firms",
    "journal": "Journal of Corporate Finance",
+   "ajg": "4",
    "year": 2026,
-   "doi": "10.1016/j.jcorpfin.2026.103012"
+   "doi": "10.1016/j.jcorpfin.2026.103012",
+   "citations": 0
   },
   {
    "fmarc_year": 2026,
    "title": "Global equity integration reconsidered: country- and industry-level components",
    "journal": "Journal of International Financial Markets, Institutions and Money",
+   "ajg": "3",
    "year": 2026,
-   "doi": "10.1016/j.intfin.2026.102390"
+   "doi": "10.1016/j.intfin.2026.102390",
+   "citations": 0
   }
  ]
 }

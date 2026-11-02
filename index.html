@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FMARC Impact Dashboard</title>
-<meta name="description" content="Countries represented at the Financial Management & Accounting Research Conference since 2019, and where the papers presented there were later published.">
+<meta name="description" content="International reach and academic impact of the Financial Management & Accounting Research Conference (FMARC) since 2019: countries represented, papers later published, and journal quality.">
 <style>
 :root {
   color-scheme: light;
@@ -23,6 +23,8 @@
   --map-stroke: #fcfcfb;
   --seq-1: #cde2fb; --seq-2: #9ec5f4; --seq-3: #6da7ec; --seq-4: #3987e5; --seq-5: #256abf; --seq-6: #184f95; --seq-7: #0d366b;
   --chip: #efeee9;
+  --star-4s: #0d366b; --star-4: #1c5cab; --star-3: #2a78d6; --star-2: #5598e7; --star-1: #86b6ef;
+  --note-bg: #f4f1e6;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -42,6 +44,8 @@
     --map-stroke: #1a1a19;
     --seq-1: #184f95; --seq-2: #1c5cab; --seq-3: #256abf; --seq-4: #2a78d6; --seq-5: #3987e5; --seq-6: #6da7ec; --seq-7: #9ec5f4;
     --chip: #262624;
+    --star-4s: #9ec5f4; --star-4: #6da7ec; --star-3: #3987e5; --star-2: #256abf; --star-1: #184f95;
+    --note-bg: #2a2820;
   }
 }
 :root[data-theme="dark"] {
@@ -61,6 +65,8 @@
   --map-stroke: #1a1a19;
   --seq-1: #184f95; --seq-2: #1c5cab; --seq-3: #256abf; --seq-4: #2a78d6; --seq-5: #3987e5; --seq-6: #6da7ec; --seq-7: #9ec5f4;
   --chip: #262624;
+  --star-4s: #9ec5f4; --star-4: #6da7ec; --star-3: #3987e5; --star-2: #256abf; --star-1: #184f95;
+  --note-bg: #2a2820;
 }
 * { box-sizing: border-box; }
 body {
@@ -134,7 +140,22 @@ a { color: var(--series-1); }
 footer { color: var(--text-muted); font-size: 12.5px; margin-top: 24px; }
 footer p { margin: 4px 0; }
 .empty { color: var(--text-muted); padding: 24px 0; }
+.kpis.inner { margin: 4px 0 18px; }
+.kpis.inner .tile { background: var(--page); }
+.kpis.inner .tile .value { font-size: 26px; }
+.prelim { background: var(--note-bg); color: var(--text-secondary); border-radius: 8px; padding: 8px 12px; font-size: 13px; margin: 0 0 14px; }
+.ref { color: var(--text-muted); font-size: 12px; margin-top: 8px; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.split h3 { font-size: 14px; font-weight: 600; margin: 0 0 6px; color: var(--text-secondary); }
+.star { display: inline-block; min-width: 26px; padding: 1px 6px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  text-align: center; border: 1px solid var(--border); color: var(--text-primary); font-variant-numeric: tabular-nums; }
+table.heat td.cell { text-align: center; font-variant-numeric: tabular-nums; border-bottom: 2px solid var(--surface-1); }
+table.heat td.cell.dark { color: #ffffff; }
+ol.cited { margin: 0; padding-left: 20px; font-size: 14px; }
+ol.cited li { margin-bottom: 10px; }
+ol.cited .meta { color: var(--text-muted); font-size: 12.5px; }
 @media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .map-wrap { grid-template-columns: 1fr; }
   .tile.hero .value { font-size: 40px; }
@@ -167,18 +188,52 @@ footer p { margin: 4px 0; }
     </div>
   </section>
 
+  <section class="card" aria-labelledby="reach-title">
+    <h2 id="reach-title">International reach</h2>
+    <p class="sub">Who presents at FMARC, counted from the author lists and affiliations of the papers presented.</p>
+    <div class="kpis inner" id="reach-tiles"></div>
+    <h3 class="sub" style="margin-bottom:4px">Countries represented each year</h3>
+    <div class="chart" id="cty-chart"></div>
+    <div class="ref" id="cty-note"></div>
+  </section>
+
   <section class="card" aria-labelledby="pub-title">
     <h2 id="pub-title">From conference to journal</h2>
     <p class="sub">Each paper counted once, in the first year it was presented. Recent years are still in the publication pipeline.</p>
     <div class="keys" id="pub-keys"></div>
     <div class="chart" id="pub-chart"></div>
-    <details><summary>Show as table</summary><div class="table-scroll" id="pub-table"></div></details>
+    <div class="table-scroll" id="pub-table"></div>
+    <div class="ref" id="pub-ref"></div>
   </section>
 
-  <section class="card" aria-labelledby="j-title">
-    <h2 id="j-title">Where the papers were published</h2>
-    <p class="sub">Journals publishing papers first presented at FMARC.</p>
-    <div class="chart" id="j-chart"></div>
+  <section class="card" aria-labelledby="q-title">
+    <h2 id="q-title">Journal quality</h2>
+    <p class="sub" id="q-sub"></p>
+    <div class="prelim" id="q-prelim" hidden></div>
+    <div class="kpis inner" id="q-tiles"></div>
+    <div class="split">
+      <div><h3>Papers by journal rating</h3><div class="chart" id="star-chart"></div></div>
+      <div><h3>Most frequent journals</h3><div class="keys" id="j-keys"></div><div class="chart" id="j-chart"></div></div>
+    </div>
+    <div class="ref" id="q-ref"></div>
+  </section>
+
+  <section class="card" aria-labelledby="lag-title">
+    <h2 id="lag-title">Time from conference to publication</h2>
+    <p class="sub" id="lag-sub"></p>
+    <div class="chart" id="lag-chart"></div>
+  </section>
+
+  <section class="card" aria-labelledby="theme-title">
+    <h2 id="theme-title">Research themes over time</h2>
+    <p class="sub">Share of papers presented each year whose title touches each theme. A paper can count towards several themes.</p>
+    <div class="table-scroll"><table class="data heat" id="themes"></table></div>
+  </section>
+
+  <section class="card" aria-labelledby="cited-title">
+    <h2 id="cited-title">Most cited</h2>
+    <p class="sub" id="cited-sub"></p>
+    <ol class="cited" id="cited"></ol>
   </section>
 
   <section class="card" aria-labelledby="list-title">
@@ -189,7 +244,7 @@ footer p { margin: 4px 0; }
   </section>
 
   <footer>
-    <p>Sources: FMARC programmes and paper lists; publication metadata from Crossref. Countries come from author affiliations on the papers as presented; years where many papers were anonymised have partial coverage, shown under the map.</p>
+    <p>Sources: FMARC programmes and paper lists; publication metadata and citation counts from Crossref; journal ratings from the Chartered ABS Academic Journal Guide (<span id="foot-ajg"></span>). Countries come from author affiliations on the papers as presented; years where many papers were anonymised have partial coverage.</p>
     <p>A publication is listed once it has been matched to the presented paper with high confidence. Updated monthly.</p>
   </footer>
 </main>
@@ -224,31 +279,61 @@ Promise.all([fetch("data/dashboard.json").then(r => r.json()), fetch(WORLD).then
   .then(([data, world]) => render(data, world))
   .catch(err => { document.getElementById("kpis").replaceChildren(el("div", { class: "empty" }, "Could not load the dashboard data.")); console.error(err); });
 
+const STARS = [
+  { key: "4*", label: "4*", color: v("--star-4s") }, { key: "4", label: "4", color: v("--star-4") },
+  { key: "3", label: "3", color: v("--star-3") }, { key: "2", label: "2", color: v("--star-2") },
+  { key: "1", label: "1", color: v("--star-1") }, { key: "not listed", label: "Not listed", color: v("--rest") },
+];
+const starOf = k => STARS.find(s => s.key === k) || STARS[STARS.length - 1];
+const pct = (a, b) => (b ? Math.round(100 * a / b) : 0);
+
+// bar with a 4px rounded data end; horizontal bars grow right from x0, vertical bars grow up from y0
+function hbar(svg, x0, y, w, h, color) {
+  const r = Math.min(4, w, h / 2);
+  return svg.append("path").style("fill", color)
+    .attr("d", `M${x0},${y}H${x0 + w - r}Q${x0 + w},${y} ${x0 + w},${y + r}V${y + h - r}Q${x0 + w},${y + h} ${x0 + w - r},${y + h}H${x0}Z`);
+}
+function vbar(svg, x, y0, w, h, color) {
+  const top = y0 - h, r = Math.min(4, h, w / 2);
+  return svg.append("path").style("fill", color)
+    .attr("d", `M${x},${y0}V${top + r}Q${x},${top} ${x + r},${top}H${x + w - r}Q${x + w},${top} ${x + w},${top + r}V${y0}Z`);
+}
+function tiles(id, list) {
+  document.getElementById(id).replaceChildren(...list.map(t => {
+    const d = el("div", { class: "tile" + (t.hero ? " hero" : "") });
+    d.append(el("div", { class: "label" }, t.label), el("div", { class: "value" }, t.value), el("div", { class: "note" }, t.note));
+    return d;
+  }));
+}
+function keys(id, list) {
+  document.getElementById(id).replaceChildren(...list.map(s => { const k = el("span", {}, s.label); k.style.setProperty("--k", s.color); return k; }));
+}
+
 function render(data, world) {
   document.getElementById("updated").textContent = `Data updated ${data.generated}`;
+  document.getElementById("foot-ajg").textContent = `${data.ajg.edition} edition`;
   renderKpis(data);
   const map = renderMap(data, world);
   renderChips(data, map);
+  renderReach(data);
   renderPubChart(data);
-  renderJournals(data);
+  renderQuality(data);
+  renderLag(data);
+  renderThemes(data);
+  renderCited(data);
   renderList(data);
 }
 
 function renderKpis(data) {
   const k = data.kpi;
   const first = data.years[0], last = data.years[data.years.length - 1];
-  const tiles = [
+  tiles("kpis", [
     { label: "Papers presented", value: fmt(k.papers), note: `${first}–${last}, each paper counted once`, hero: true },
     { label: "Countries represented", value: fmt(k.countries), note: "by author affiliation" },
-    { label: "Published in journals", value: fmt(k.published), note: `in ${fmt(k.journals)} journals` },
+    { label: "Published in journals", value: fmt(k.published), note: `in ${fmt(k.journals)} journals · ${k.ajg_top} rated AJG 4* or 4` },
     { label: "Published share", value: k.mature_published_pct == null ? "–" : `${k.mature_published_pct}%`,
       note: k.mature_years.length ? `papers presented ${k.mature_years[0]}–${k.mature_years[1]}` : "" },
-  ];
-  document.getElementById("kpis").replaceChildren(...tiles.map(t => {
-    const d = el("div", { class: "tile" + (t.hero ? " hero" : "") });
-    d.append(el("div", { class: "label" }, t.label), el("div", { class: "value" }, t.value), el("div", { class: "note" }, t.note));
-    return d;
-  }));
+  ]);
 }
 
 function renderMap(data, world) {
@@ -349,15 +434,46 @@ function renderChips(data, map) {
   select("all");
 }
 
+function renderReach(data) {
+  const k = data.kpi, rows = data.by_year;
+  const lastRet = [...rows].reverse().find(d => d.returning != null);
+  tiles("reach-tiles", [
+    { label: "Researchers", value: fmt(k.researchers), note: "distinct authors of papers presented" },
+    { label: "Multi-country author teams", value: `${k.multi_country_pct}%`, note: "papers with authors in 2+ countries" },
+    { label: "Authors from abroad", value: `${k.foreign_author_pct}%`, note: "papers with an author based outside Cyprus, the host" },
+    { label: "Returning authors", value: lastRet ? `${pct(lastRet.returning, lastRet.presented)}%` : "–",
+      note: lastRet ? `of ${lastRet.year} papers had an author from an earlier FMARC` : "" },
+  ]);
+  const W = 760, H = 210, m = { t: 22, r: 8, b: 26, l: 8 };
+  const x = d3.scaleBand().domain(rows.map(d => d.year)).range([m.l, W - m.r]).padding(0.35);
+  const y = d3.scaleLinear().domain([0, d3.max(rows, d => d.countries)]).nice().range([H - m.b, m.t]);
+  const svg = d3.select("#cty-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
+    .attr("aria-label", "Number of countries represented per conference year");
+  svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickSize(0)).call(g => g.selectAll("text").attr("dy", "1.1em"));
+  const bw = Math.min(24, x.bandwidth());
+  rows.forEach(d => {
+    const partial = d.papers_with_country < 0.8 * d.presented;
+    const xx = x(d.year) + (x.bandwidth() - bw) / 2;
+    vbar(svg, xx, y(0), bw, y(0) - y(d.countries), v("--series-1")).style("opacity", partial ? 0.4 : 1);
+    svg.append("text").attr("class", "value-label").attr("x", x(d.year) + x.bandwidth() / 2).attr("y", y(d.countries) - 6)
+      .attr("text-anchor", "middle").text(d.countries);
+    svg.append("rect").attr("x", x(d.year)).attr("y", m.t).attr("width", x.bandwidth()).attr("height", H - m.t - m.b).attr("fill", "transparent")
+      .on("pointermove", evt => showTip(evt, [el("div", { class: "v" }, `${d.countries} countries`),
+        el("div", { class: "k" }, `FMARC ${d.year} · affiliations known for ${d.papers_with_country} of ${d.presented} papers`)]))
+      .on("pointerleave", hideTip);
+  });
+  const partialYears = rows.filter(d => d.papers_with_country < 0.8 * d.presented).map(d => d.year);
+  document.getElementById("cty-note").textContent = partialYears.length
+    ? `Faded bars (${partialYears.join(", ")}): affiliations known for fewer than 80% of that year's papers, so the count is a lower bound.` : "";
+}
+
 function renderPubChart(data) {
   const series = [
     { key: "published", label: "Published in a journal", color: v("--series-1") },
     { key: "working_paper", label: "Working paper / proceedings", color: v("--series-2") },
     { key: "not_found", label: "Not yet published", color: v("--rest") },
   ];
-  document.getElementById("pub-keys").replaceChildren(...series.map(s => {
-    const k = el("span", {}, s.label); k.style.setProperty("--k", s.color); return k;
-  }));
+  keys("pub-keys", series);
   const rows = data.by_year;
   const W = 760, H = 300, m = { t: 22, r: 8, b: 28, l: 36 };
   const x = d3.scaleBand().domain(rows.map(d => d.year)).range([m.l, W - m.r]).padding(0.35);
@@ -367,30 +483,23 @@ function renderPubChart(data) {
   svg.append("g").attr("transform", `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - m.l - m.r)))
     .call(g => g.select(".domain").remove()).call(g => g.selectAll(".tick text").attr("x", -6));
   svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickSize(0)).call(g => g.selectAll("text").attr("dy", "1.1em"));
-  const bw = Math.min(24, x.bandwidth());
-  const gap = 2;
+  const bw = Math.min(24, x.bandwidth()), gap = 2;
   rows.forEach(d => {
     let y0 = 0;
     const g = svg.append("g");
     const segs = series.filter(s => d[s.key] > 0);
     segs.forEach((s, i) => {
-      const v = d[s.key];
-      const top = y(y0 + v), bottom = y(y0);
+      const val = d[s.key];
+      const top = y(y0 + val), bottom = y(y0);
       const h = Math.max(0, bottom - top - (i > 0 ? gap : 0));
       const xx = x(d.year) + (x.bandwidth() - bw) / 2;
-      const isTop = i === segs.length - 1;
-      if (isTop) {
-        const r = Math.min(4, h);
-        g.append("path").style("fill", s.color)
-          .attr("d", `M${xx},${top + h}V${top + r}Q${xx},${top} ${xx + r},${top}H${xx + bw - r}Q${xx + bw},${top} ${xx + bw},${top + r}V${top + h}Z`);
-      } else {
-        g.append("rect").attr("x", xx).attr("y", top).attr("width", bw).attr("height", h).style("fill", s.color);
-      }
-      y0 += v;
+      if (i === segs.length - 1) vbar(g, xx, top + h, bw, h, s.color);
+      else g.append("rect").attr("x", xx).attr("y", top).attr("width", bw).attr("height", h).style("fill", s.color);
+      y0 += val;
     });
     if (d.published) {
       g.append("text").attr("class", "value-label").attr("x", x(d.year) + x.bandwidth() / 2).attr("y", y(d.unique) - 6)
-        .attr("text-anchor", "middle").text(`${Math.round(100 * d.published / d.unique)}%`);
+        .attr("text-anchor", "middle").text(`${pct(d.published, d.unique)}%`);
     }
     g.append("rect").attr("x", x(d.year)).attr("y", m.t).attr("width", x.bandwidth()).attr("height", H - m.t - m.b)
       .attr("fill", "transparent")
@@ -401,35 +510,127 @@ function renderPubChart(data) {
       ]))
       .on("pointerleave", hideTip);
   });
+
+  // the numbers behind the chart, with the journal rating of each published paper
   const t = el("table", { class: "data" });
   const hr = el("tr");
-  ["Year", "Papers", "Published", "Working paper / proceedings", "Not yet published", "Countries"].forEach(h => hr.append(el("th", {}, h)));
-  t.append(hr, ...rows.map(d => { const tr = el("tr");
-    [d.year, d.unique, d.published, d.working_paper, d.not_found, d.countries].forEach((v, i) => tr.append(el("td", i ? { class: "n" } : {}, String(v))));
-    return tr; }));
+  ["FMARC year", "Papers", "Published", "Published %", ...STARS.map(s => s.key === "not listed" ? "Not in AJG" : `AJG ${s.label}`), "AJG 3+ share"]
+    .forEach((h, i) => hr.append(el("th", i ? { style: "text-align:right" } : {}, h)));
+  const total = { year: "All years", unique: d3.sum(rows, d => d.unique), published: d3.sum(rows, d => d.published),
+    stars: Object.fromEntries(STARS.map(s => [s.key, d3.sum(rows, d => d.stars[s.key])])) };
+  const line = (d, bold) => {
+    const tr = el("tr"); if (bold) tr.style.fontWeight = "600";
+    const top3 = d.stars["4*"] + d.stars["4"] + d.stars["3"];
+    [d.year, d.unique, d.published, `${pct(d.published, d.unique)}%`, ...STARS.map(s => d.stars[s.key] || "–"),
+     d.published ? `${pct(top3, d.published)}%` : "–"].forEach((val, i) => tr.append(el("td", i ? { class: "n" } : {}, String(val))));
+    return tr;
+  };
+  t.append(hr, ...rows.map(d => line(d)), line(total, true));
   document.getElementById("pub-table").replaceChildren(t);
+  document.getElementById("pub-ref").textContent =
+    `Journal ratings: ${data.ajg.source} (reference point: ${data.ajg.edition} edition, applied to papers from every year).` +
+    (data.ajg.verified ? "" : " Ratings are preliminary until checked against the official guide.");
 }
 
-function renderJournals(data) {
-  const rows = data.journals.slice(0, 12);
-  if (!rows.length) { document.getElementById("j-chart").replaceChildren(el("div", { class: "empty" }, "No publications yet.")); return; }
-  const rowH = 28, m = { t: 4, r: 40, b: 4, l: 290 }, W = 760, H = m.t + m.b + rows.length * rowH;
-  const x = d3.scaleLinear().domain([0, d3.max(rows, d => d.n)]).range([m.l, W - m.r]);
-  const svg = d3.select("#j-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
-    .attr("aria-label", "Number of FMARC papers per journal");
-  const color = v("--series-1");
+function renderQuality(data) {
+  const k = data.kpi, a = data.ajg;
+  document.getElementById("q-sub").textContent =
+    `Where FMARC papers were published, by the journal's rating in the ${a.edition} edition of the Chartered ABS Academic Journal Guide (4* = world elite, 4 = top journals in the field).`;
+  const pre = document.getElementById("q-prelim");
+  pre.hidden = a.verified;
+  pre.textContent = `Preliminary: the ${a.edition} ratings shown here are being checked against the official guide.`;
+  tiles("q-tiles", [
+    { label: "World-elite journals (4*)", value: fmt(a.distribution["4*"]), note: "papers" },
+    { label: "Top journals (4* or 4)", value: fmt(k.ajg_top), note: `of ${fmt(k.published)} published papers` },
+    { label: "Rated AJG 3 or higher", value: `${k.ajg_3plus_pct}%`, note: "of published papers" },
+    { label: "Journals", value: fmt(k.journals), note: "different journals" },
+  ]);
+
+  // papers by rating
+  const rows = STARS.map(s => ({ ...s, n: a.distribution[s.key] || 0 }));
+  const rowH = 30, m = { t: 4, r: 40, b: 4, l: 110 }, W = 380, H = m.t + m.b + rows.length * rowH;
+  const x = d3.scaleLinear().domain([0, d3.max(rows, d => d.n) || 1]).range([m.l, W - m.r]);
+  const svg = d3.select("#star-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
+    .attr("aria-label", `Published papers by ${a.edition} rating`);
   rows.forEach((d, i) => {
-    const yy = m.t + i * rowH + (rowH - 14) / 2;
-    const w = Math.max(2, x(d.n) - m.l), r = Math.min(4, w);
-    const name = d.journal.length > 44 ? d.journal.slice(0, 42) + "…" : d.journal;
-    svg.append("text").attr("class", "row-label").attr("x", m.l - 10).attr("y", yy + 11).attr("text-anchor", "end").text(name);
-    svg.append("path").style("fill", color)
-      .attr("d", `M${m.l},${yy}H${m.l + w - r}Q${m.l + w},${yy} ${m.l + w},${yy + r}V${yy + 14 - r}Q${m.l + w},${yy + 14} ${m.l + w - r},${yy + 14}H${m.l}Z`);
-    svg.append("text").attr("class", "value-label").attr("x", m.l + w + 6).attr("y", yy + 11).text(d.n);
+    const yy = m.t + i * rowH + (rowH - 16) / 2;
+    svg.append("text").attr("class", "row-label").attr("x", m.l - 10).attr("y", yy + 12).attr("text-anchor", "end")
+      .text(d.key === "not listed" ? "Not in AJG" : `AJG ${d.label}`);
+    if (d.n) hbar(svg, m.l, yy, Math.max(2, x(d.n) - m.l), 16, d.color);
+    svg.append("text").attr("class", "value-label").attr("x", (d.n ? x(d.n) : m.l) + 6).attr("y", yy + 12).text(d.n);
     svg.append("rect").attr("x", 0).attr("y", m.t + i * rowH).attr("width", W).attr("height", rowH).attr("fill", "transparent")
-      .on("pointermove", evt => showTip(evt, [el("div", { class: "v" }, `${d.n} paper${d.n === 1 ? "" : "s"}`), el("div", { class: "k" }, d.journal)]))
+      .on("pointermove", evt => showTip(evt, [el("div", { class: "v" }, `${d.n} paper${d.n === 1 ? "" : "s"}`),
+        el("div", { class: "k" }, `${d.key === "not listed" ? "Journal not in the AJG" : "AJG " + d.label} · ${pct(d.n, k.published)}% of published papers`)]))
       .on("pointerleave", hideTip);
   });
+
+  // most frequent journals, coloured by rating
+  keys("j-keys", STARS.filter(s => data.journals.slice(0, 12).some(j => j.ajg === s.key)).map(s => ({ label: s.key === "not listed" ? "Not in AJG" : `AJG ${s.label}`, color: s.color })));
+  const js = data.journals.slice(0, 12);
+  const jH = 26, jm = { t: 4, r: 30, b: 4, l: 250 }, JW = 500, JH = jm.t + jm.b + js.length * jH;
+  const jx = d3.scaleLinear().domain([0, d3.max(js, d => d.n) || 1]).range([jm.l, JW - jm.r]);
+  const jsvg = d3.select("#j-chart").append("svg").attr("viewBox", `0 0 ${JW} ${JH}`).attr("role", "img")
+    .attr("aria-label", "Number of FMARC papers per journal, coloured by AJG rating");
+  js.forEach((d, i) => {
+    const yy = jm.t + i * jH + (jH - 14) / 2;
+    const name = d.journal.length > 38 ? d.journal.slice(0, 36) + "…" : d.journal;
+    jsvg.append("text").attr("class", "row-label").attr("x", jm.l - 10).attr("y", yy + 11).attr("text-anchor", "end").text(name);
+    hbar(jsvg, jm.l, yy, Math.max(2, jx(d.n) - jm.l), 14, starOf(d.ajg).color);
+    jsvg.append("text").attr("class", "value-label").attr("x", jx(d.n) + 6).attr("y", yy + 11).text(d.n);
+    jsvg.append("rect").attr("x", 0).attr("y", jm.t + i * jH).attr("width", JW).attr("height", jH).attr("fill", "transparent")
+      .on("pointermove", evt => showTip(evt, [el("div", { class: "v" }, `${d.n} paper${d.n === 1 ? "" : "s"}`),
+        el("div", { class: "k" }, `${d.journal} · ${d.ajg === "not listed" ? "not in the AJG" : "AJG " + d.ajg}`)]))
+      .on("pointerleave", hideTip);
+  });
+  document.getElementById("q-ref").textContent =
+    `Source: ${a.source}. Reference point: the ${a.edition} edition, applied to papers from every year. Publication data as of ${data.generated}.`;
+}
+
+function renderLag(data) {
+  const k = data.kpi;
+  document.getElementById("lag-sub").textContent =
+    `Years from the FMARC presentation to the journal article's first appearance online. Median: ${k.median_years_to_publication} years, across ${k.published} published papers.`;
+  const rows = Object.entries(data.lag).map(([label, n]) => ({ label, n }));
+  const W = 760, H = 220, m = { t: 22, r: 8, b: 26, l: 8 };
+  const x = d3.scaleBand().domain(rows.map(d => d.label)).range([m.l, W - m.r]).padding(0.35);
+  const y = d3.scaleLinear().domain([0, d3.max(rows, d => d.n) || 1]).nice().range([H - m.b, m.t]);
+  const svg = d3.select("#lag-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
+    .attr("aria-label", "Published papers by years from presentation to publication");
+  svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickSize(0)).call(g => g.selectAll("text").attr("dy", "1.1em"));
+  const bw = Math.min(24, x.bandwidth());
+  rows.forEach(d => {
+    if (d.n) vbar(svg, x(d.label) + (x.bandwidth() - bw) / 2, y(0), bw, y(0) - y(d.n), v("--series-1"));
+    svg.append("text").attr("class", "value-label").attr("x", x(d.label) + x.bandwidth() / 2).attr("y", y(d.n) - 6)
+      .attr("text-anchor", "middle").text(d.n);
+  });
+}
+
+function renderThemes(data) {
+  const tbl = document.getElementById("themes");
+  const hr = el("tr"); hr.append(el("th", {}, "Theme"));
+  data.years.forEach(y => hr.append(el("th", { style: "text-align:center" }, String(y))));
+  const max = d3.max(Object.values(data.themes).flatMap(o => Object.values(o))) || 1;
+  tbl.replaceChildren(hr, ...Object.entries(data.themes).map(([name, byYear]) => {
+    const tr = el("tr"); tr.append(el("td", {}, name));
+    data.years.forEach(y => {
+      const val = byYear[String(y)] || 0;
+      const td = el("td", { class: "cell", title: `${name}, ${y}: ${val}% of papers` }, `${Math.round(val)}%`);
+      td.style.background = `color-mix(in srgb, var(--series-1) ${Math.round(8 + 52 * val / max)}%, transparent)`;
+      tr.append(td);
+    });
+    return tr;
+  }));
+}
+
+function renderCited(data) {
+  document.getElementById("cited-sub").textContent =
+    `FMARC papers with the most citations once published. ${fmt(data.kpi.citations)} citations in total. Counts from Crossref as of ${data.generated}; Google Scholar counts are usually higher.`;
+  document.getElementById("cited").replaceChildren(...data.most_cited.map(p => {
+    const li = el("li");
+    const a = el("a", { href: "https://doi.org/" + p.doi, target: "_blank", rel: "noopener" }, p.title);
+    li.append(a, el("div", { class: "meta" }, `FMARC ${p.fmarc_year} → ${p.journal} (${p.year}) · ${fmt(p.citations)} citations`));
+    return li;
+  }));
 }
 
 function renderList(data) {
@@ -439,16 +640,19 @@ function renderList(data) {
     const s = q.value.trim().toLowerCase();
     const rows = data.publications.filter(p => !s || p.title.toLowerCase().includes(s) || p.journal.toLowerCase().includes(s));
     const hr = el("tr");
-    ["FMARC", "Title", "Journal", "Year"].forEach(h => hr.append(el("th", {}, h)));
+    ["FMARC", "Title", "Journal", data.ajg.edition, "Year", "Citations"].forEach((h, i) => hr.append(el("th", i >= 3 ? { style: "text-align:right" } : {}, h)));
     tbl.replaceChildren(hr, ...rows.map(p => {
       const tr = el("tr");
       const title = el("td");
-      if (p.doi) { const a = el("a", { href: "https://doi.org/" + p.doi, target: "_blank", rel: "noopener" }, p.title); title.append(a); }
+      if (p.doi) title.append(el("a", { href: "https://doi.org/" + p.doi, target: "_blank", rel: "noopener" }, p.title));
       else title.textContent = p.title;
-      tr.append(el("td", { class: "n" }, String(p.fmarc_year)), title, el("td", {}, p.journal), el("td", { class: "n" }, p.year ? String(p.year) : ""));
+      const star = el("td", { class: "n" });
+      star.append(el("span", { class: "star" }, p.ajg === "not listed" ? "–" : p.ajg));
+      tr.append(el("td", { class: "n" }, String(p.fmarc_year)), title, el("td", {}, p.journal), star,
+        el("td", { class: "n" }, p.year ? String(p.year) : ""), el("td", { class: "n" }, fmt(p.citations)));
       return tr;
     }));
-    if (!rows.length) { const tr = el("tr"); tr.append(el("td", { colspan: 4, class: "empty" }, "No matching papers.")); tbl.append(tr); }
+    if (!rows.length) { const tr = el("tr"); tr.append(el("td", { colspan: 6, class: "empty" }, "No matching papers.")); tbl.append(tr); }
   }
   q.addEventListener("input", draw);
   draw();
