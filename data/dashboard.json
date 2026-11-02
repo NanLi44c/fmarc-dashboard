@@ -22,7 +22,7 @@
   ],
   "mature_published_pct": 49.1,
   "ajg_top": 39,
-  "ajg_3plus_pct": 83.2,
+  "ajg_3plus_pct": 84.0,
   "median_years_to_publication": 2.0,
   "citations": 1758,
   "multi_country_pct": 44.0,
@@ -31,16 +31,16 @@
  "ajg": {
   "edition": "AJG 2024",
   "source": "Chartered Association of Business Schools, Academic Journal Guide 2024",
-  "verified": false,
+  "verified": true,
   "distribution": {
    "4*": 11,
    "4": 28,
-   "3": 60,
-   "2": 16,
-   "1": 2,
+   "3": 61,
+   "2": 13,
+   "1": 4,
    "not listed": 2
   },
-  "rated_share_3plus": 84.6
+  "rated_share_3plus": 85.5
  },
  "by_year": [
   {
@@ -58,9 +58,9 @@
    "stars": {
     "4*": 3,
     "4": 8,
-    "3": 19,
-    "2": 7,
-    "1": 2,
+    "3": 20,
+    "2": 5,
+    "1": 3,
     "not listed": 1
    }
   },
@@ -100,9 +100,9 @@
    "stars": {
     "4*": 5,
     "4": 13,
-    "3": 13,
-    "2": 3,
-    "1": 0,
+    "3": 14,
+    "2": 1,
+    "1": 1,
     "not listed": 1
    }
   },
@@ -121,8 +121,8 @@
    "stars": {
     "4*": 3,
     "4": 5,
-    "3": 12,
-    "2": 0,
+    "3": 11,
+    "2": 1,
     "1": 0,
     "not listed": 0
    }
@@ -573,6 +573,11 @@
    "ajg": "3"
   },
   {
+   "journal": "International Journal of Finance & Economics",
+   "n": 2,
+   "ajg": "3"
+  },
+  {
    "journal": "Journal of Accounting and Public Policy",
    "n": 2,
    "ajg": "3"
@@ -603,16 +608,6 @@
    "ajg": "2"
   },
   {
-   "journal": "International Journal of Finance & Economics",
-   "n": 2,
-   "ajg": "2"
-  },
-  {
-   "journal": "Maritime Economics & Logistics",
-   "n": 2,
-   "ajg": "2"
-  },
-  {
    "journal": "Maritime Policy & Management",
    "n": 2,
    "ajg": "2"
@@ -621,6 +616,11 @@
    "journal": "Scottish Journal of Political Economy",
    "n": 2,
    "ajg": "2"
+  },
+  {
+   "journal": "Maritime Economics & Logistics",
+   "n": 2,
+   "ajg": "1"
   },
   {
    "journal": "Operations Research",
@@ -688,11 +688,6 @@
    "ajg": "3"
   },
   {
-   "journal": "Journal of Regulatory Economics",
-   "n": 1,
-   "ajg": "3"
-  },
-  {
    "journal": "Real Estate Economics",
    "n": 1,
    "ajg": "3"
@@ -724,6 +719,11 @@
   },
   {
    "journal": "Journal of Public Budgeting, Accounting & Financial Management",
+   "n": 1,
+   "ajg": "2"
+  },
+  {
+   "journal": "Journal of Regulatory Economics",
    "n": 1,
    "ajg": "2"
   },
@@ -1129,7 +1129,7 @@
    "fmarc_year": 2019,
    "title": "Dynamic volatility spillovers and investor sentiment components across freight-shipping markets",
    "journal": "Maritime Economics & Logistics",
-   "ajg": "2",
+   "ajg": "1",
    "year": 2022,
    "doi": "10.1057/s41278-021-00209-3",
    "citations": 15
@@ -1156,7 +1156,7 @@
    "fmarc_year": 2019,
    "title": "Corporate governance, Shari'ah governance and financial flexibility: Evidence from the MENA region",
    "journal": "International Journal of Finance & Economics",
-   "ajg": "2",
+   "ajg": "3",
    "year": 2023,
    "doi": "10.1002/ijfe.2878",
    "citations": 15
@@ -1318,7 +1318,7 @@
    "fmarc_year": 2022,
    "title": "The relationship between technical innovation and financial performance in shipping firms",
    "journal": "Maritime Economics & Logistics",
-   "ajg": "2",
+   "ajg": "1",
    "year": 2022,
    "doi": "10.1057/s41278-022-00251-9",
    "citations": 0
@@ -1588,7 +1588,7 @@
    "fmarc_year": 2022,
    "title": "Brexit and Its Impact on EU Financial Markets",
    "journal": "International Journal of Finance & Economics",
-   "ajg": "2",
+   "ajg": "3",
    "year": 2026,
    "doi": "10.1002/ijfe.70149",
    "citations": 0
@@ -1786,7 +1786,7 @@
    "fmarc_year": 2023,
    "title": "Real estate regulation and market perceptions of bank returns: evidence from a quasi-natural experiment in India",
    "journal": "Journal of Regulatory Economics",
-   "ajg": "3",
+   "ajg": "2",
    "year": 2026,
    "doi": "10.1007/s11149-026-09509-z",
    "citations": 0
