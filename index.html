@@ -145,7 +145,7 @@ footer p { margin: 4px 0; }
 .kpis.inner .tile .value { font-size: 26px; }
 .prelim { background: var(--note-bg); color: var(--text-secondary); border-radius: 8px; padding: 8px 12px; font-size: 13px; margin: 0 0 14px; }
 .ref { color: var(--text-muted); font-size: 12px; margin-top: 8px; }
-.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 24px; align-items: start; }
 .split h3 { font-size: 14px; font-weight: 600; margin: 0 0 6px; color: var(--text-secondary); }
 .star { display: inline-block; min-width: 26px; padding: 1px 6px; border-radius: 999px; font-size: 12px; font-weight: 600;
   text-align: center; border: 1px solid var(--border); color: var(--text-primary); font-variant-numeric: tabular-nums; }
@@ -548,7 +548,7 @@ function renderQuality(data) {
 
   // papers by rating
   const rows = STARS.map(s => ({ ...s, n: a.distribution[s.key] || 0 }));
-  const rowH = 30, m = { t: 4, r: 40, b: 4, l: 110 }, W = 380, H = m.t + m.b + rows.length * rowH;
+  const rowH = 30, m = { t: 4, r: 36, b: 4, l: 92 }, W = 300, H = m.t + m.b + rows.length * rowH;
   const x = d3.scaleLinear().domain([0, d3.max(rows, d => d.n) || 1]).range([m.l, W - m.r]);
   const svg = d3.select("#star-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
     .attr("aria-label", `Published papers by ${a.edition} rating`);
@@ -567,13 +567,13 @@ function renderQuality(data) {
   // most frequent journals, coloured by rating
   keys("j-keys", STARS.filter(s => data.journals.slice(0, 12).some(j => j.ajg === s.key)).map(s => ({ label: s.key === "not listed" ? "Not in AJG" : `AJG ${s.label}`, color: s.color })));
   const js = data.journals.slice(0, 12);
-  const jH = 26, jm = { t: 4, r: 30, b: 4, l: 250 }, JW = 500, JH = jm.t + jm.b + js.length * jH;
+  const jH = 26, jm = { t: 4, r: 28, b: 4, l: 236 }, JW = 460, JH = jm.t + jm.b + js.length * jH;
   const jx = d3.scaleLinear().domain([0, d3.max(js, d => d.n) || 1]).range([jm.l, JW - jm.r]);
   const jsvg = d3.select("#j-chart").append("svg").attr("viewBox", `0 0 ${JW} ${JH}`).attr("role", "img")
     .attr("aria-label", "Number of FMARC papers per journal, coloured by AJG rating");
   js.forEach((d, i) => {
     const yy = jm.t + i * jH + (jH - 14) / 2;
-    const name = d.journal.length > 38 ? d.journal.slice(0, 36) + "…" : d.journal;
+    const name = d.journal.length > 36 ? d.journal.slice(0, 34) + "…" : d.journal;
     jsvg.append("text").attr("class", "row-label").attr("x", jm.l - 10).attr("y", yy + 11).attr("text-anchor", "end").text(name);
     hbar(jsvg, jm.l, yy, Math.max(2, jx(d.n) - jm.l), 14, starOf(d.ajg).color);
     jsvg.append("text").attr("class", "value-label").attr("x", jx(d.n) + 6).attr("y", yy + 11).text(d.n);
