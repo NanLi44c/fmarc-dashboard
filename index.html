@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FMARC Impact Dashboard</title>
+<meta name="description" content="Countries represented at the Financial Management & Accounting Research Conference since 2019, and where the papers presented there were later published.">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --rest: #d9d8d1;
+  --map-empty: #ecebe6;
+  --map-stroke: #fcfcfb;
+  --seq-1: #cde2fb; --seq-2: #9ec5f4; --seq-3: #6da7ec; --seq-4: #3987e5; --seq-5: #256abf; --seq-6: #184f95; --seq-7: #0d366b;
+  --chip: #efeee9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface-1: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --rest: #45453f;
+    --map-empty: #2a2a28;
+    --map-stroke: #1a1a19;
+    --seq-1: #184f95; --seq-2: #1c5cab; --seq-3: #256abf; --seq-4: #2a78d6; --seq-5: #3987e5; --seq-6: #6da7ec; --seq-7: #9ec5f4;
+    --chip: #262624;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface-1: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.10);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --rest: #45453f;
+  --map-empty: #2a2a28;
+  --map-stroke: #1a1a19;
+  --seq-1: #184f95; --seq-2: #1c5cab; --seq-3: #256abf; --seq-4: #2a78d6; --seq-5: #3987e5; --seq-6: #6da7ec; --seq-7: #9ec5f4;
+  --chip: #262624;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--text-primary);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding-block: 32px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header h1 { font-size: 26px; font-weight: 650; margin: 0 0 4px; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--text-secondary); }
+.updated { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 24px 0; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.tile .label { color: var(--text-secondary); font-size: 13px; }
+.tile .value { font-size: 30px; font-weight: 600; line-height: 1.2; margin-top: 4px; }
+.tile .note { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.tile.hero .value { font-size: 48px; }
+section.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+section.card h2 { font-size: 17px; font-weight: 600; margin: 0 0 2px; }
+section.card .sub { color: var(--text-secondary); font-size: 13px; margin: 0 0 14px; }
+.controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; }
+.chip {
+  font: inherit; font-size: 13px; padding: 5px 11px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border); background: transparent; color: var(--text-primary);
+}
+.chip:hover { background: var(--chip); }
+.chip[aria-pressed="true"] { background: var(--text-primary); color: var(--surface-1); border-color: var(--text-primary); }
+.map-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 20px; align-items: start; }
+#map svg { width: 100%; height: auto; display: block; }
+#map path.country { stroke: var(--map-stroke); stroke-width: 0.5; }
+#map path.country.has { cursor: pointer; }
+#map path.country.has:hover, #map path.country.focus { stroke: var(--text-primary); stroke-width: 1.2; }
+.legend { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 12px; margin-top: 8px; }
+.legend .ramp { display: flex; height: 10px; width: 180px; border-radius: 3px; overflow: hidden; }
+.legend .ramp span { flex: 1; }
+.coverage { color: var(--text-muted); font-size: 12px; margin-top: 6px; }
+.rank { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rank th { text-align: left; color: var(--text-muted); font-weight: 500; padding: 0 0 6px; border-bottom: 1px solid var(--grid); }
+.rank td { padding: 5px 0; border-bottom: 1px solid var(--grid); }
+.rank td.n { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+.rank .bar { display: inline-block; height: 6px; border-radius: 0 3px 3px 0; background: var(--series-1); vertical-align: middle; margin-left: 6px; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart text { fill: var(--text-muted); font-size: 12px; }
+.chart .tick line { stroke: var(--grid); }
+.chart .domain { stroke: var(--axis); }
+.chart .value-label { fill: var(--text-secondary); font-size: 12px; }
+.chart .row-label { fill: var(--text-secondary); font-size: 12.5px; }
+.keys { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+.keys span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--k); }
+details { margin-top: 10px; font-size: 13px; }
+details summary { cursor: pointer; color: var(--text-secondary); }
+table.data { border-collapse: collapse; width: 100%; margin-top: 8px; font-size: 13px; }
+table.data th, table.data td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+table.data th { color: var(--text-muted); font-weight: 500; }
+table.data td.n { text-align: right; font-variant-numeric: tabular-nums; }
+.table-scroll { overflow-x: auto; }
+input[type="search"] {
+  font: inherit; font-size: 14px; padding: 7px 10px; border-radius: 8px; width: min(360px, 100%);
+  border: 1px solid var(--border); background: var(--page); color: var(--text-primary);
+}
+a { color: var(--series-1); }
+#tip {
+  position: fixed; pointer-events: none; z-index: 10; opacity: 0; transition: opacity 80ms;
+  background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 10px; font-size: 13px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 260px;
+}
+#tip .v { font-weight: 600; font-size: 15px; }
+#tip .k { color: var(--text-secondary); }
+#tip .row { display: flex; align-items: center; gap: 6px; }
+#tip .row i { display: inline-block; width: 12px; height: 2px; background: var(--k); }
+footer { color: var(--text-muted); font-size: 12.5px; margin-top: 24px; }
+footer p { margin: 4px 0; }
+.empty { color: var(--text-muted); padding: 24px 0; }
+@media (max-width: 860px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .map-wrap { grid-template-columns: 1fr; }
+  .tile.hero .value { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>FMARC impact dashboard</h1>
+    <p>Financial Management &amp; Accounting Research Conference: who presents, and where the papers go next.</p>
+    <div class="updated" id="updated"></div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section class="card" aria-labelledby="map-title">
+    <h2 id="map-title">Countries represented</h2>
+    <p class="sub">Papers with at least one author affiliated in each country, by conference year.</p>
+    <div class="controls" id="year-chips" role="group" aria-label="Conference year"></div>
+    <div class="map-wrap">
+      <div>
+        <div id="map" aria-hidden="true"></div>
+        <div class="legend" id="map-legend"></div>
+        <div class="coverage" id="coverage"></div>
+      </div>
+      <div>
+        <table class="rank" id="rank" aria-label="Countries ranked by number of papers"></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="pub-title">
+    <h2 id="pub-title">From conference to journal</h2>
+    <p class="sub">Each paper counted once, in the first year it was presented. Recent years are still in the publication pipeline.</p>
+    <div class="keys" id="pub-keys"></div>
+    <div class="chart" id="pub-chart"></div>
+    <details><summary>Show as table</summary><div class="table-scroll" id="pub-table"></div></details>
+  </section>
+
+  <section class="card" aria-labelledby="j-title">
+    <h2 id="j-title">Where the papers were published</h2>
+    <p class="sub">Journals publishing papers first presented at FMARC.</p>
+    <div class="chart" id="j-chart"></div>
+  </section>
+
+  <section class="card" aria-labelledby="list-title">
+    <h2 id="list-title">Published papers</h2>
+    <p class="sub">Journal articles that grew out of FMARC presentations.</p>
+    <input type="search" id="q" placeholder="Search title or journal" aria-label="Search published papers">
+    <div class="table-scroll"><table class="data" id="pubs"></table></div>
+  </section>
+
+  <footer>
+    <p>Sources: FMARC programmes and paper lists; publication metadata from Crossref. Countries come from author affiliations on the papers as presented; years where many papers were anonymised have partial coverage, shown under the map.</p>
+    <p>A publication is listed once it has been matched to the presented paper with high confidence. Updated monthly.</p>
+  </footer>
+</main>
+<div id="tip" role="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+const WORLD = "vendor/countries-50m.json";  // world-atlas@2.0.2, Natural Earth 1:50m
+const v = n => `var(${n})`;  // fills reference theme tokens, so a theme switch recolours without re-rendering
+const fmt = d3.format(",");
+const tip = document.getElementById("tip");
+
+function el(tag, attrs = {}, text) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+function showTip(evt, rows) {
+  tip.replaceChildren(...rows);
+  tip.style.opacity = 1;
+  const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = evt.clientX + pad, y = evt.clientY + pad;
+  if (x + w > innerWidth - 8) x = evt.clientX - w - pad;
+  if (y + h > innerHeight - 8) y = evt.clientY - h - pad;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+function hideTip() { tip.style.opacity = 0; }
+
+Promise.all([fetch("data/dashboard.json").then(r => r.json()), fetch(WORLD).then(r => r.json())])
+  .then(([data, world]) => render(data, world))
+  .catch(err => { document.getElementById("kpis").replaceChildren(el("div", { class: "empty" }, "Could not load the dashboard data.")); console.error(err); });
+
+function render(data, world) {
+  document.getElementById("updated").textContent = `Data updated ${data.generated}`;
+  renderKpis(data);
+  const map = renderMap(data, world);
+  renderChips(data, map);
+  renderPubChart(data);
+  renderJournals(data);
+  renderList(data);
+}
+
+function renderKpis(data) {
+  const k = data.kpi;
+  const first = data.years[0], last = data.years[data.years.length - 1];
+  const tiles = [
+    { label: "Papers presented", value: fmt(k.papers), note: `${first}–${last}, each paper counted once`, hero: true },
+    { label: "Countries represented", value: fmt(k.countries), note: "by author affiliation" },
+    { label: "Published in journals", value: fmt(k.published), note: `in ${fmt(k.journals)} journals` },
+    { label: "Published share", value: k.mature_published_pct == null ? "–" : `${k.mature_published_pct}%`,
+      note: k.mature_years.length ? `papers presented ${k.mature_years[0]}–${k.mature_years[1]}` : "" },
+  ];
+  document.getElementById("kpis").replaceChildren(...tiles.map(t => {
+    const d = el("div", { class: "tile" + (t.hero ? " hero" : "") });
+    d.append(el("div", { class: "label" }, t.label), el("div", { class: "value" }, t.value), el("div", { class: "note" }, t.note));
+    return d;
+  }));
+}
+
+function renderMap(data, world) {
+  const W = 760, H = 400;
+  const feats = topojson.feature(world, world.objects.countries).features.filter(f => f.id !== "010");
+  const projection = d3.geoNaturalEarth1().fitExtent([[0, 4], [W, H - 4]], { type: "FeatureCollection", features: feats });
+  const path = d3.geoPath(projection);
+  const svg = d3.select("#map").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img");
+  const byNumeric = {};
+  for (const [a2, m] of Object.entries(data.country_meta)) byNumeric[m.numeric] = a2;
+  const paths = svg.append("g").selectAll("path").data(feats).join("path").attr("class", "country").attr("d", path);
+  const ramp = ["--seq-1", "--seq-2", "--seq-3", "--seq-4", "--seq-5", "--seq-6", "--seq-7"].map(v);
+
+  function update(key) {
+    const counts = data.countries_by_year[key] || {};
+    const max = Math.max(1, ...Object.values(counts));
+    const scale = d3.scaleQuantize().domain([1, Math.max(max, 7)]).range(ramp);
+    paths
+      .style("fill", f => { const a2 = byNumeric[f.id]; return a2 && counts[a2] ? scale(counts[a2]) : v("--map-empty"); })
+      .classed("has", f => !!(byNumeric[f.id] && counts[byNumeric[f.id]]))
+      .on("pointermove", (evt, f) => {
+        const a2 = byNumeric[f.id];
+        const n = a2 ? counts[a2] || 0 : 0;
+        const name = a2 ? data.country_meta[a2].name : (f.properties && f.properties.name) || "";
+        showTip(evt, [el("div", { class: "v" }, n ? `${fmt(n)} paper${n === 1 ? "" : "s"}` : "No papers"), el("div", { class: "k" }, name)]);
+      })
+      .on("pointerleave", hideTip);
+
+    const lg = document.getElementById("map-legend");
+    const rampEl = el("span", { class: "ramp" });
+    ramp.forEach(c => { const s = el("span"); s.style.background = c; rampEl.append(s); });
+    lg.replaceChildren(el("span", {}, "1"), rampEl, el("span", {}, `${fmt(Math.max(max, 7))}+ papers`));
+
+    const rows = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    const top = rows.slice(0, 15);
+    const tbl = document.getElementById("rank");
+    const head = el("tr"); head.append(el("th", {}, "Country"), el("th", { style: "text-align:right" }, "Papers"));
+    tbl.replaceChildren(head, ...top.map(([a2, n]) => {
+      const tr = el("tr");
+      const name = el("td", {}, data.country_meta[a2] ? data.country_meta[a2].name : a2);
+      const num = el("td", { class: "n" }, fmt(n));
+      const bar = el("span", { class: "bar" }); bar.style.width = Math.max(3, 60 * n / top[0][1]) + "px";
+      num.append(bar);
+      tr.append(name, num);
+      tr.addEventListener("pointerenter", () => paths.classed("focus", f => byNumeric[f.id] === a2));
+      tr.addEventListener("pointerleave", () => paths.classed("focus", false));
+      return tr;
+    }));
+    if (rows.length > top.length) {
+      const tr = el("tr"); tr.append(el("td", { colspan: 2, style: "color:var(--text-muted)" }, `and ${rows.length - top.length} more`));
+      tbl.append(tr);
+    }
+
+    const cov = document.getElementById("coverage");
+    if (key === "all") {
+      cov.textContent = `${rows.length} countries across all years.`;
+    } else {
+      const y = data.by_year.find(d => String(d.year) === key);
+      const partial = y.papers_with_country < y.presented;
+      cov.textContent = `${rows.length} countries in ${key}. Affiliations known for ${y.papers_with_country} of ${y.presented} papers` +
+        (partial ? " (some papers were anonymised)." : ".");
+    }
+  }
+  return { update };
+}
+
+function renderChips(data, map) {
+  const wrap = document.getElementById("year-chips");
+  const keys = ["all", ...data.years.map(String)];
+  let timer = null;
+  const chips = keys.map(k => {
+    const b = el("button", { class: "chip", type: "button", "aria-pressed": "false" }, k === "all" ? "All years" : k);
+    b.addEventListener("click", () => { stop(); select(k); });
+    return b;
+  });
+  const play = el("button", { class: "chip", type: "button" }, "▶ Play");
+  function select(k) {
+    chips.forEach((c, i) => c.setAttribute("aria-pressed", String(keys[i] === k)));
+    map.update(k);
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; play.textContent = "▶ Play"; } }
+  play.addEventListener("click", () => {
+    if (timer) return stop();
+    let i = 1; select(keys[i]); play.textContent = "❚❚ Pause";
+    timer = setInterval(() => { i += 1; if (i >= keys.length) { stop(); select("all"); return; } select(keys[i]); }, 1400);
+  });
+  wrap.replaceChildren(...chips, play);
+  select("all");
+}
+
+function renderPubChart(data) {
+  const series = [
+    { key: "published", label: "Published in a journal", color: v("--series-1") },
+    { key: "working_paper", label: "Working paper / proceedings", color: v("--series-2") },
+    { key: "not_found", label: "Not yet published", color: v("--rest") },
+  ];
+  document.getElementById("pub-keys").replaceChildren(...series.map(s => {
+    const k = el("span", {}, s.label); k.style.setProperty("--k", s.color); return k;
+  }));
+  const rows = data.by_year;
+  const W = 760, H = 300, m = { t: 22, r: 8, b: 28, l: 36 };
+  const x = d3.scaleBand().domain(rows.map(d => d.year)).range([m.l, W - m.r]).padding(0.35);
+  const y = d3.scaleLinear().domain([0, d3.max(rows, d => d.unique)]).nice().range([H - m.b, m.t]);
+  const svg = d3.select("#pub-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
+    .attr("aria-label", "Papers per conference year by publication outcome");
+  svg.append("g").attr("transform", `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - m.l - m.r)))
+    .call(g => g.select(".domain").remove()).call(g => g.selectAll(".tick text").attr("x", -6));
+  svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickSize(0)).call(g => g.selectAll("text").attr("dy", "1.1em"));
+  const bw = Math.min(24, x.bandwidth());
+  const gap = 2;
+  rows.forEach(d => {
+    let y0 = 0;
+    const g = svg.append("g");
+    const segs = series.filter(s => d[s.key] > 0);
+    segs.forEach((s, i) => {
+      const v = d[s.key];
+      const top = y(y0 + v), bottom = y(y0);
+      const h = Math.max(0, bottom - top - (i > 0 ? gap : 0));
+      const xx = x(d.year) + (x.bandwidth() - bw) / 2;
+      const isTop = i === segs.length - 1;
+      if (isTop) {
+        const r = Math.min(4, h);
+        g.append("path").style("fill", s.color)
+          .attr("d", `M${xx},${top + h}V${top + r}Q${xx},${top} ${xx + r},${top}H${xx + bw - r}Q${xx + bw},${top} ${xx + bw},${top + r}V${top + h}Z`);
+      } else {
+        g.append("rect").attr("x", xx).attr("y", top).attr("width", bw).attr("height", h).style("fill", s.color);
+      }
+      y0 += v;
+    });
+    if (d.published) {
+      g.append("text").attr("class", "value-label").attr("x", x(d.year) + x.bandwidth() / 2).attr("y", y(d.unique) - 6)
+        .attr("text-anchor", "middle").text(`${Math.round(100 * d.published / d.unique)}%`);
+    }
+    g.append("rect").attr("x", x(d.year)).attr("y", m.t).attr("width", x.bandwidth()).attr("height", H - m.t - m.b)
+      .attr("fill", "transparent")
+      .on("pointermove", evt => showTip(evt, [
+        el("div", { class: "k" }, `FMARC ${d.year} · ${d.unique} papers`),
+        ...series.map(s => { const r = el("div", { class: "row" }); const i = el("i"); i.style.setProperty("--k", s.color);
+          r.append(i, el("span", { class: "v" }, String(d[s.key])), el("span", { class: "k" }, s.label)); return r; }),
+      ]))
+      .on("pointerleave", hideTip);
+  });
+  const t = el("table", { class: "data" });
+  const hr = el("tr");
+  ["Year", "Papers", "Published", "Working paper / proceedings", "Not yet published", "Countries"].forEach(h => hr.append(el("th", {}, h)));
+  t.append(hr, ...rows.map(d => { const tr = el("tr");
+    [d.year, d.unique, d.published, d.working_paper, d.not_found, d.countries].forEach((v, i) => tr.append(el("td", i ? { class: "n" } : {}, String(v))));
+    return tr; }));
+  document.getElementById("pub-table").replaceChildren(t);
+}
+
+function renderJournals(data) {
+  const rows = data.journals.slice(0, 12);
+  if (!rows.length) { document.getElementById("j-chart").replaceChildren(el("div", { class: "empty" }, "No publications yet.")); return; }
+  const rowH = 28, m = { t: 4, r: 40, b: 4, l: 290 }, W = 760, H = m.t + m.b + rows.length * rowH;
+  const x = d3.scaleLinear().domain([0, d3.max(rows, d => d.n)]).range([m.l, W - m.r]);
+  const svg = d3.select("#j-chart").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
+    .attr("aria-label", "Number of FMARC papers per journal");
+  const color = v("--series-1");
+  rows.forEach((d, i) => {
+    const yy = m.t + i * rowH + (rowH - 14) / 2;
+    const w = Math.max(2, x(d.n) - m.l), r = Math.min(4, w);
+    const name = d.journal.length > 44 ? d.journal.slice(0, 42) + "…" : d.journal;
+    svg.append("text").attr("class", "row-label").attr("x", m.l - 10).attr("y", yy + 11).attr("text-anchor", "end").text(name);
+    svg.append("path").style("fill", color)
+      .attr("d", `M${m.l},${yy}H${m.l + w - r}Q${m.l + w},${yy} ${m.l + w},${yy + r}V${yy + 14 - r}Q${m.l + w},${yy + 14} ${m.l + w - r},${yy + 14}H${m.l}Z`);
+    svg.append("text").attr("class", "value-label").attr("x", m.l + w + 6).attr("y", yy + 11).text(d.n);
+    svg.append("rect").attr("x", 0).attr("y", m.t + i * rowH).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+      .on("pointermove", evt => showTip(evt, [el("div", { class: "v" }, `${d.n} paper${d.n === 1 ? "" : "s"}`), el("div", { class: "k" }, d.journal)]))
+      .on("pointerleave", hideTip);
+  });
+}
+
+function renderList(data) {
+  const tbl = document.getElementById("pubs");
+  const q = document.getElementById("q");
+  function draw() {
+    const s = q.value.trim().toLowerCase();
+    const rows = data.publications.filter(p => !s || p.title.toLowerCase().includes(s) || p.journal.toLowerCase().includes(s));
+    const hr = el("tr");
+    ["FMARC", "Title", "Journal", "Year"].forEach(h => hr.append(el("th", {}, h)));
+    tbl.replaceChildren(hr, ...rows.map(p => {
+      const tr = el("tr");
+      const title = el("td");
+      if (p.doi) { const a = el("a", { href: "https://doi.org/" + p.doi, target: "_blank", rel: "noopener" }, p.title); title.append(a); }
+      else title.textContent = p.title;
+      tr.append(el("td", { class: "n" }, String(p.fmarc_year)), title, el("td", {}, p.journal), el("td", { class: "n" }, p.year ? String(p.year) : ""));
+      return tr;
+    }));
+    if (!rows.length) { const tr = el("tr"); tr.append(el("td", { colspan: 4, class: "empty" }, "No matching papers.")); tbl.append(tr); }
+  }
+  q.addEventListener("input", draw);
+  draw();
+}
+</script>
+</body>
+</html>
